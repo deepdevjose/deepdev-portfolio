@@ -1,33 +1,44 @@
-// Page navigation: show/hide content based on navbar clicks
+document.addEventListener('DOMContentLoaded', () => {
+  //
+  // 1. SHOW CONTACTS TOGGLE
+  //
+  const sidebar     = document.querySelector('.sidebar');
+  const contactBtn  = document.querySelector('[data-sidebar-btn]');
+  if (sidebar && contactBtn) {
+    // initial state
+    contactBtn.setAttribute('aria-expanded', 'false');
+    contactBtn.addEventListener('click', () => {
+      const isOpen = sidebar.classList.toggle('active');
+      // accesibilities
+      contactBtn.setAttribute('aria-expanded', String(isOpen));
+      // icon toggle
+      const icon = contactBtn.querySelector('ion-icon');
+      if (icon) icon.name = isOpen ? 'chevron-up' : 'chevron-down';
+    });
+  }
 
-document.addEventListener('DOMContentLoaded', function () {
+  //
+  // 2. PAGE NAVIGATION
+  //
   const navLinks = document.querySelectorAll('[data-nav-link]');
-  const sections = document.querySelectorAll('article[data-page]');
+  const pages    = document.querySelectorAll('article[data-page]');
 
-  // Attach click handlers
   navLinks.forEach(link => {
-    link.addEventListener('click', function () {
-      const targetPage = this.textContent.trim().toLowerCase();
-
-      // Show/hide sections
-      sections.forEach(section => {
-        section.style.display =
-          section.getAttribute('data-page') === targetPage ? 'block' : 'none';
+    link.addEventListener('click', e => {
+      e.preventDefault(); // cancel default link behavior
+      const target = link.dataset.navLink;
+      // show/hide secciones
+      pages.forEach(page => {
+        page.hidden = page.dataset.page !== target;
       });
-
-      // Update active class on nav links
-      navLinks.forEach(navLink => navLink.classList.remove('active'));
-      this.classList.add('active');
+      // active class
+      navLinks.forEach(n => n.classList.toggle('active', n === link));
     });
   });
 
-  // Initialize: show first section and set first nav link active
-  sections.forEach((section, index) => {
-    if (index === 0) {
-      section.style.display = 'block';
-      navLinks[index].classList.add('active');
-    } else {
-      section.style.display = 'none';
-    }
-  });
+  // first page active
+  if (navLinks.length && pages.length) {
+    navLinks[0].classList.add('active');
+    pages.forEach((page, i) => page.hidden = i !== 0);
+  }
 });
