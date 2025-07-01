@@ -1,0 +1,52 @@
+/* Utilities CSS: helpers and generic rules */
+
+/* Custom scrollbars */
+.has-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.has-scrollbar::-webkit-scrollbar-track {
+  background: var(--onyx);
+  border-radius: 5px;
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--orange-yellow-crayola);
+  border-radius: 5px;
+}
+
+.has-scrollbar::-webkit-scrollbar-button {
+  width: 20px;
+}
+
+/* Keyframe for scale-up animations */
+@keyframes scaleUp {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Utility helpers */
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.hidden {
+  display: none !important;
+}
