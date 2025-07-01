@@ -27,11 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', e => {
       e.preventDefault(); // cancel default link behavior
       const target = link.dataset.navLink;
-      // show/hide secciones
+      // show/hide sections
       pages.forEach(page => {
-        page.hidden = page.dataset.page !== target;
+        page.classList.toggle('active', page.dataset.page === target);
       });
-      // active class
+      // active state for links
       navLinks.forEach(n => n.classList.toggle('active', n === link));
     });
   });
@@ -39,6 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // first page active
   if (navLinks.length && pages.length) {
     navLinks[0].classList.add('active');
-    pages.forEach((page, i) => page.hidden = i !== 0);
+    pages.forEach((page, i) => page.classList.toggle('active', i === 0));
   }
 });
