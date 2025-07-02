@@ -239,37 +239,39 @@
                     </ul>
                 </section>
             </article>
-
             <article class="portfolio" data-page="portfolio">
                 <header>
                     <h2 class="h2 article-title">Portfolio</h2>
                 </header>
 
                 <section class="projects">
+                    <!-- Filters -->
                     <ul class="filter-list">
                         <li class="filter-item"><button class="active" data-filter-btn>All</button></li>
                         <li class="filter-item"><button data-filter-btn>Data Analysis</button></li>
                         <li class="filter-item"><button data-filter-btn>Machine Learning</button></li>
                         <li class="filter-item"><button data-filter-btn>Web Development</button></li>
+                        <li class="filter-item"><button data-filter-btn>Embedded &amp; IoT</button></li>
                     </ul>
 
+                    <!-- Mobile Select -->
                     <div class="filter-select-box">
                         <button class="filter-select" data-select>
-                            <div class="select-value" data-select-value>Select Category</div>
-
+                            <div class="select-value" data-select-value>All Categories</div>
                             <div class="select-icon">
                                 <ion-icon name="chevron-down"></ion-icon>
                             </div>
                         </button>
-
                         <ul class="select-list">
                             <li class="select-item"><button data-select-item>All</button></li>
                             <li class="select-item"><button data-select-item>Data Analysis</button></li>
                             <li class="select-item"><button data-select-item>Machine Learning</button></li>
                             <li class="select-item"><button data-select-item>Web Development</button></li>
+                            <li class="select-item"><button data-select-item>Embedded &amp; IoT</button></li>
                         </ul>
                     </div>
 
+                    <!-- Project Items -->
                     <ul class="project-list">
                         <li class="project-item active" data-filter-item data-category="data analysis">
                             <a href="https://github.com/Joseecodm/data-analysis-project">
@@ -277,9 +279,22 @@
                                     <div class="project-item-icon-box">
                                         <ion-icon name="eye-outline"></ion-icon>
                                     </div>
-                                    <img src="" alt="data-analysis" loading="lazy">
+                                    <img src="assets/working.jpg" alt="Sales Data Analysis" loading="lazy" />
                                 </figure>
                                 <h3 class="project-title">Sales Data Analysis</h3>
+                                <p class="project-category">Data Analysis</p>
+                            </a>
+                        </li>
+
+                        <li class="project-item active" data-filter-item data-category="data analysis">
+                            <a href="https://github.com/Joseecodm/financial-analysis">
+                                <figure class="project-img">
+                                    <div class="project-item-icon-box">
+                                        <ion-icon name="eye-outline"></ion-icon>
+                                    </div>
+                                    <img src="assets/working.jpg" alt="Financial Data Visualization" loading="lazy" />
+                                </figure>
+                                <h3 class="project-title">Financial Data Visualization</h3>
                                 <p class="project-category">Data Analysis</p>
                             </a>
                         </li>
@@ -290,9 +305,22 @@
                                     <div class="project-item-icon-box">
                                         <ion-icon name="eye-outline"></ion-icon>
                                     </div>
-                                    <img src="" alt="machine-learning" loading="lazy">
+                                    <img src="assets/working.jpg" alt="Housing Price Prediction" loading="lazy" />
                                 </figure>
-                                <h3 class="project-title">Predictive Model for Housing Prices</h3>
+                                <h3 class="project-title">Housing Price Prediction</h3>
+                                <p class="project-category">Machine Learning</p>
+                            </a>
+                        </li>
+
+                        <li class="project-item active" data-filter-item data-category="machine learning">
+                            <a href="https://github.com/Joseecodm/image-recognition-project">
+                                <figure class="project-img">
+                                    <div class="project-item-icon-box">
+                                        <ion-icon name="eye-outline"></ion-icon>
+                                    </div>
+                                    <img src="assets/working.jpg" alt="Image Recognition System" loading="lazy" />
+                                </figure>
+                                <h3 class="project-title">Image Recognition System</h3>
                                 <p class="project-category">Machine Learning</p>
                             </a>
                         </li>
@@ -303,41 +331,30 @@
                                     <div class="project-item-icon-box">
                                         <ion-icon name="eye-outline"></ion-icon>
                                     </div>
-                                    <img src="" alt="portfolio" loading="lazy">
+                                    <img src="assets/working.jpg" alt="Personal Portfolio Website" loading="lazy" />
                                 </figure>
                                 <h3 class="project-title">Personal Portfolio Website</h3>
                                 <p class="project-category">Web Development</p>
                             </a>
                         </li>
 
-                        <li class="project-item active" data-filter-item data-category="machine learning">
-                            <a href="https://github.com/Joseecodm/image-recognition-project">
+                        <li class="project-item active" data-filter-item data-category="embedded & iot">
+                            <a href="https://github.com/Joseecodm/smart-irrigation-dashboard">
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
                                         <ion-icon name="eye-outline"></ion-icon>
                                     </div>
-                                    <img src="" alt="image-recognition" loading="lazy">
+                                    <img src="assets/working.jpg" alt="Smart Irrigation System" loading="lazy" />
                                 </figure>
-                                <h3 class="project-title">Image Recognition System</h3>
-                                <p class="project-category">Machine Learning</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item data-category="data analysis">
-                            <a href="https://github.com/Joseecodm/financial-analysis">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-                                    <img src="https" alt="financial-analysis" loading="lazy">
-                                </figure>
-                                <h3 class="project-title">Financial Data Visualization</h3>
-                                <p class="project-category">Data Analysis</p>
+                                <h3 class="project-title">Smart Irrigation System</h3>
+                                <p class="project-category">Embedded &amp; IoT</p>
                             </a>
                         </li>
                     </ul>
                 </section>
             </article>
+
+
 
             <article class="blog " data-page="blog">
                 <header>
@@ -348,7 +365,7 @@
                         <li class="blog-post-item">
                             <a href="#">
                                 <figure class="blog-banner-box">
-                                    <img src="" alt="AI applied to social networks" loading="lazy">
+                                    <img src="assets/working.jpg" alt="AI applied to social networks" loading="lazy">
                                 </figure>
 
                                 <div class="blog-content">
@@ -371,7 +388,7 @@
                         <li class="blog-post-item">
                             <a href="#">
                                 <figure class="blog-banner-box">
-                                    <img src="" alt="Data visualization with Tableau" loading="lazy">
+                                    <img src="assets/working.jpg" alt="Data visualization with Tableau" loading="lazy">
                                 </figure>
 
                                 <div class="blog-content">
@@ -393,7 +410,7 @@
                         <li class="blog-post-item">
                             <a href="#">
                                 <figure class="blog-banner-box">
-                                    <img src="" alt="Structured programming in C++" loading="lazy">
+                                    <img src="assets/working.jpg" alt="Structured programming in C++" loading="lazy">
                                 </figure>
 
                                 <div class="blog-content">
@@ -415,7 +432,7 @@
                         <li class="blog-post-item">
                             <a href="#">
                                 <figure class="blog-banner-box">
-                                    <img src="" alt="Object-oriented programming in C++" loading="lazy">
+                                    <img src="assets/working.jpg" alt="Object-oriented programming in C++" loading="lazy">
                                 </figure>
 
                                 <div class="blog-content">
@@ -437,7 +454,7 @@
                         <li class="blog-post-item">
                             <a href="#">
                                 <figure class="blog-banner-box">
-                                    <img src="" alt="Functional programming in C++" loading="lazy">
+                                    <img src="assets/working.jpg" alt="Functional programming in C++" loading="lazy">
                                 </figure>
 
                                 <div class="blog-content">
