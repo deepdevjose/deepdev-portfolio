@@ -129,6 +129,10 @@ html {
 
 body {
   background: var(--smoky-black);
+  background-image: url("../assets/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 main {
@@ -139,12 +143,15 @@ main {
 
 .sidebar,
 article {
-  background: var(--eerie-black2);
-  border: 1px solid var(--jet);
+  background: rgba(30, 30, 30, 0.35); /* Fondo translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.18); /* Borde suave */
   border-radius: 20px;
-  box-shadow: var(--shadow1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12px); /* Difuminado tipo glass */
+  -webkit-backdrop-filter: blur(12px);
   z-index: 1;
   padding: 15px;
+  transition: background 0.3s;
 }
 
 .sidebar.active {
