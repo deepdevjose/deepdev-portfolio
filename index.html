@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>José Manuel Cortes Cerón - Portfolio</title>
+    <meta name="description" content="Portfolio of José Manuel Cortes Cerón - Developer specializing in Data Analysis, Machine Learning, Web Development, and IoT solutions.">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
         rel="stylesheet">
@@ -13,13 +14,14 @@
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <main class="container">
 
-        <aside class="sidebar" data-sidebar>
+        <aside class="sidebar" data-sidebar role="complementary" aria-label="Contact information and social links">
             <div class="sidebar-info">
                 <figure class="avatar-box">
-                    <img src="./assets/avatar.png" alt="avatar" width="80" >
+                    <img src="./assets/avatar.png" alt="José Manuel Cortes Cerón professional photo" width="80" >
                 </figure>
 
                 <div class="info-content">
@@ -27,30 +29,30 @@
                     <p class="title">Developer</p>
                 </div>
 
-                <button class="info-more-btn" data-sidebar-btn type="button">
+                <button class="info-more-btn" data-sidebar-btn type="button" aria-expanded="false" aria-controls="sidebar-info-more" aria-label="Show contact information">
                     <span>Show Contacts</span>
-                    <ion-icon name="arrow-down-circle-outline"></ion-icon>
+                    <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
                 </button>
             </div>
 
-            <div class="sidebar-info-more">
-                <div class="separator"></div>
+            <div class="sidebar-info-more" id="sidebar-info-more">
+                <div class="separator" role="separator" aria-hidden="true"></div>
 
-                <ul class="contacts-list">
-                    <li class="contact-item">
-                        <div class="icon-box">
+                <ul class="contacts-list" role="list">
+                    <li class="contact-item" role="listitem">
+                        <div class="icon-box" aria-hidden="true">
                             <ion-icon name="mail-outline"></ion-icon>
                         </div>
 
                         <div class="contact-info">
                             <p class="contact-title">E-mail</p>
 
-                            <a href="mailto:230110688@itsoeh.edu.mx" class="contact-link">230110688@itsoeh.edu.mx</a>
+                            <a href="mailto:230110688@itsoeh.edu.mx" class="contact-link" aria-label="Send email to 230110688@itsoeh.edu.mx">230110688@itsoeh.edu.mx</a>
                         </div>
                     </li>
 
-                    <li class="contact-item">
-                        <div class="icon-box">
+                    <li class="contact-item" role="listitem">
+                        <div class="icon-box" aria-hidden="true">
                             <ion-icon name="calendar-outline"></ion-icon>
                         </div>
 
@@ -63,51 +65,51 @@
 
                 </ul>
 
-                <div class="separator"></div>
+                <div class="separator" role="separator" aria-hidden="true"></div>
 
-                <ul class="social-list">
-                    <li class="social-item"><a href="https://www.facebook.com/deepdevjose" class="social-link"><ion-icon
-                                name="logo-facebook"></ion-icon></a></li>
-                    <li class="social-item"><a href="https://www.linkedin.com/in/deepdevjose"
-                            class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-                    <li class="social-item"><a href="https://www.instagram.com/deepdevjose"
-                            class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
-                     <li class="social-item"><a href="https://github.com/deepdevjose" class="social-link">
-                            <ion-icon name="logo-github"></ion-icon></a></li>
+                <ul class="social-list" role="list" aria-label="Social media links">
+                    <li class="social-item" role="listitem"><a href="https://www.facebook.com/deepdevjose" class="social-link" aria-label="Visit Facebook profile" target="_blank" rel="noopener noreferrer"><ion-icon
+                                name="logo-facebook" aria-hidden="true"></ion-icon></a></li>
+                    <li class="social-item" role="listitem"><a href="https://www.linkedin.com/in/deepdevjose"
+                            class="social-link" aria-label="Visit LinkedIn profile" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin" aria-hidden="true"></ion-icon></a></li>
+                    <li class="social-item" role="listitem"><a href="https://www.instagram.com/deepdevjose"
+                            class="social-link" aria-label="Visit Instagram profile" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram" aria-hidden="true"></ion-icon></a></li>
+                     <li class="social-item" role="listitem"><a href="https://github.com/deepdevjose" class="social-link" aria-label="Visit GitHub profile" target="_blank" rel="noopener noreferrer">
+                            <ion-icon name="logo-github" aria-hidden="true"></ion-icon></a></li>
                 </ul>
             </div>
         </aside>
 
-        <div class="main-content">
-            <nav class="navbar">
-                <ul class="navbar-list">
-                    <li class="navbar-item"><button class="navbar-link" data-nav-link="about">About</button></li>
-                    <li class="navbar-item"><button class="navbar-link" data-nav-link="resume">Resume</button></li>
-                    <li class="navbar-item"><button class="navbar-link" data-nav-link="portfolio">Portfolio</button>
+        <div class="main-content" id="main-content" role="main">
+            <nav class="navbar" role="navigation" aria-label="Main navigation">
+                <ul class="navbar-list" role="list">
+                    <li class="navbar-item" role="listitem"><button class="navbar-link" data-nav-link="about" aria-label="Navigate to About section" aria-pressed="false">About</button></li>
+                    <li class="navbar-item" role="listitem"><button class="navbar-link" data-nav-link="resume" aria-label="Navigate to Resume section" aria-pressed="false">Resume</button></li>
+                    <li class="navbar-item" role="listitem"><button class="navbar-link" data-nav-link="portfolio" aria-label="Navigate to Portfolio section" aria-pressed="false">Portfolio</button>
                     </li>
-                    <li class="navbar-item"><button class="navbar-link" data-nav-link="blog">Blog</button></li>
-                    <li class="navbar-item"><button class="navbar-link" data-nav-link="contact">Contact</button></li>
+                    <li class="navbar-item" role="listitem"><button class="navbar-link" data-nav-link="blog" aria-label="Navigate to Blog section" aria-pressed="false">Blog</button></li>
+                    <li class="navbar-item" role="listitem"><button class="navbar-link" data-nav-link="contact" aria-label="Navigate to Contact section" aria-pressed="false">Contact</button></li>
                 </ul>
             </nav>
 
-            <article class="about active" data-page="about">
+                        <article class="about active" data-page="about" role="tabpanel" aria-labelledby="about-heading">
                 <header>
-                    <h2 class="h2 article-title">About me</h2>
+                    <h2 class="h2 article-title" id="about-heading">About me</h2>
                 </header>
 
-                <section class="about-text">
+                <section class="about-text" aria-labelledby="about-heading">
                     <p>I drive technological innovation by integrating software, hardware, and user experience—combining
                         analytical thinking with practical creativity.</p>
                     <p>I lead entrepreneurial projects with an unwavering commitment to excellence, underpinned by five
                         years of hands-on programming expertise.</p>
                 </section>
 
-                <section class="service">
-                    <h3 class="h3 service-title">What I’m doing</h3>
+                <section class="service" aria-labelledby="services-heading">
+                    <h3 class="h3 service-title" id="services-heading">What I'm doing</h3>
 
-                    <ul class="service-list">
-                        <li class="service-item">
-                            <div class="service-icon-box">
+                    <ul class="service-list" role="list">
+                        <li class="service-item" role="listitem">
+                            <div class="service-icon-box" aria-hidden="true">
                                 <ion-icon name="analytics-outline"></ion-icon>
                             </div>
                             <div class="service-content-box">
@@ -117,8 +119,8 @@
                             </div>
                         </li>
 
-                        <li class="service-item">
-                            <div class="service-icon-box">
+                        <li class="service-item" role="listitem">
+                            <div class="service-icon-box" aria-hidden="true">
                                 <ion-icon name="code-slash-outline"></ion-icon>
                             </div>
                             <div class="service-content-box">
@@ -128,8 +130,8 @@
                             </div>
                         </li>
 
-                        <li class="service-item">
-                            <div class="service-icon-box">
+                        <li class="service-item" role="listitem">
+                            <div class="service-icon-box" aria-hidden="true">
                                 <ion-icon name="hardware-chip-outline"></ion-icon>
                             </div>
                             <div class="service-content-box">
@@ -141,28 +143,26 @@
                     </ul>
                 </section>
             </article>
-
-            </article>
-            <article class="resume" data-page="resume">
+            <article class="resume" data-page="resume" role="tabpanel" aria-labelledby="resume-heading">
                 <header>
-                    <h2 class="h2 article-title">Resume</h2>
+                    <h2 class="h2 article-title" id="resume-heading">Resume</h2>
                 </header>
 
-                <section class="timeline">
+                <section class="timeline" aria-labelledby="education-heading">
                     <div class="title-wrapper">
-                        <div class="icon-box"><ion-icon name="book-outline"></ion-icon></div>
-                        <h3 class="h3">Education</h3>
+                        <div class="icon-box" aria-hidden="true"><ion-icon name="book-outline"></ion-icon></div>
+                        <h3 class="h3" id="education-heading">Education</h3>
                     </div>
 
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
+                    <ol class="timeline-list" role="list">
+                        <li class="timeline-item" role="listitem">
                             <h4 class="h4 timeline-item-title">Programming Technician Diploma, CETIS No. 026</h4>
                             <span>2020-2013</span>
                             <p class="timeline-text">Technical diploma focusing on structured programming, OOP, web, and
                                 mobile development.</p>
                         </li>
 
-                        <li class="timeline-item">
+                        <li class="timeline-item" role="listitem">
                             <h4 class="h4 timeline-item-title">Bachelor of Engineering in Information and Communication
                                 Technologies, ITSOEH</h4>
                             <span>2023 – Present</span>
@@ -172,67 +172,67 @@
                     </ol>
                 </section>
 
-                <section class="skill">
-                    <h3 class="h3 skills-title">Certifications &amp; Skills</h3>
+                <section class="skill" aria-labelledby="skills-heading">
+                    <h3 class="h3 skills-title" id="skills-heading">Certifications &amp; Skills</h3>
 
-                    <ul class="skills-list content-card">
-                        <li class="skills-item">
+                                        <ul class="skills-list content-card" role="list">
+                        <li class="skills-item" role="listitem">
                             <div class="title-wrapper">
                                 <h5 class="h5">Internet of Things (Cisco Networking Academy)</h5>
-                                <p>“Introduction to Internet of Things” (Nov 2024)</p>
+                                <p>"Introduction to Internet of Things" (Nov 2024)</p>
                             </div>
                         </li>
 
-                        <li class="skills-item">
+                        <li class="skills-item" role="listitem">
                             <div class="title-wrapper">
                                 <h5 class="h5">Data Science (Cisco Networking Academy)</h5>
-                                <p>“Introduction to Data Science” (May 2025)</p>
+                                <p>"Introduction to Data Science" (May 2025)</p>
                             </div>
                         </li>
 
-                        <li class="skills-item">
+                        <li class="skills-item" role="listitem">
                             <div class="title-wrapper">
                                 <h5 class="h5">ChatGPT Fundamentals</h5>
                                 <p>Santander Open Academy, 8-hour course (May 2025)</p>
                             </div>
                         </li>
 
-                        <li class="skills-item">
+                        <li class="skills-item" role="listitem">
                             <div class="title-wrapper">
                                 <h5 class="h5">Strategic Thinking</h5>
                                 <p>Santander Open Academy, 8-hour course (Jun 2025)</p>
                             </div>
                         </li>
 
-                        <li class="skills-item">
+                        <li class="skills-item" role="listitem">
                             <div class="title-wrapper">
                                 <h5 class="h5">360° Personal Branding</h5>
                                 <p>Santander Open Academy, 8-hour course (Jun 2025)</p>
                             </div>
                         </li>
 
-                        <li class="skills-item">
+                        <li class="skills-item" role="listitem">
                             <div class="title-wrapper">
                                 <h5 class="h5">Programming &amp; Frameworks</h5>
                                 <p>C++, Python, Java; React, TensorFlow, GPT4All</p>
                             </div>
                         </li>
 
-                        <li class="skills-item">
+                        <li class="skills-item" role="listitem">
                             <div class="title-wrapper">
                                 <h5 class="h5">Embedded Systems &amp; IoT</h5>
                                 <p>Arduino, ESP32, MQTT</p>
                             </div>
                         </li>
 
-                        <li class="skills-item">
+                        <li class="skills-item" role="listitem">
                             <div class="title-wrapper">
                                 <h5 class="h5">Web &amp; UX Design</h5>
                                 <p>Glassmorphism, GitHub Pages</p>
                             </div>
                         </li>
 
-                        <li class="skills-item">
+                        <li class="skills-item" role="listitem">
                             <div class="title-wrapper">
                                 <h5 class="h5">Languages</h5>
                                 <p>Spanish (Native), English (Advanced)</p>
@@ -241,112 +241,112 @@
                     </ul>
                 </section>
             </article>
-            <article class="portfolio" data-page="portfolio">
+            <article class="portfolio" data-page="portfolio" role="tabpanel" aria-labelledby="portfolio-heading">
                 <header>
-                    <h2 class="h2 article-title">Portfolio</h2>
+                    <h2 class="h2 article-title" id="portfolio-heading">Portfolio</h2>
                 </header>
 
-                <section class="projects">
+                <section class="projects" aria-labelledby="portfolio-heading">
                     <!-- Filters -->
-                    <ul class="filter-list">
-                        <li class="filter-item"><button class="active" data-filter-btn>All</button></li>
-                        <li class="filter-item"><button data-filter-btn>Data Analysis</button></li>
-                        <li class="filter-item"><button data-filter-btn>Machine Learning</button></li>
-                        <li class="filter-item"><button data-filter-btn>Web Development</button></li>
-                        <li class="filter-item"><button data-filter-btn>Embedded &amp; IoT</button></li>
+                    <ul class="filter-list" role="tablist" aria-label="Project filters">
+                        <li class="filter-item" role="presentation"><button class="active" data-filter-btn role="tab" aria-selected="true" aria-controls="project-list" id="filter-all">All</button></li>
+                        <li class="filter-item" role="presentation"><button data-filter-btn role="tab" aria-selected="false" aria-controls="project-list" id="filter-data">Data Analysis</button></li>
+                        <li class="filter-item" role="presentation"><button data-filter-btn role="tab" aria-selected="false" aria-controls="project-list" id="filter-ml">Machine Learning</button></li>
+                        <li class="filter-item" role="presentation"><button data-filter-btn role="tab" aria-selected="false" aria-controls="project-list" id="filter-web">Web Development</button></li>
+                        <li class="filter-item" role="presentation"><button data-filter-btn role="tab" aria-selected="false" aria-controls="project-list" id="filter-iot">Embedded &amp; IoT</button></li>
                     </ul>
 
                     <!-- Mobile Select -->
                     <div class="filter-select-box">
-                        <button class="filter-select" data-select>
+                        <button class="filter-select" data-select aria-expanded="false" aria-haspopup="listbox" aria-label="Select project category">
                             <div class="select-value" data-select-value>All Categories</div>
-                            <div class="select-icon">
+                            <div class="select-icon" aria-hidden="true">
                                 <ion-icon name="chevron-down"></ion-icon>
                             </div>
                         </button>
-                        <ul class="select-list">
-                            <li class="select-item"><button data-select-item>All</button></li>
-                            <li class="select-item"><button data-select-item>Data Analysis</button></li>
-                            <li class="select-item"><button data-select-item>Machine Learning</button></li>
-                            <li class="select-item"><button data-select-item>Web Development</button></li>
-                            <li class="select-item"><button data-select-item>Embedded &amp; IoT</button></li>
+                        <ul class="select-list" role="listbox" aria-label="Project categories">
+                            <li class="select-item" role="option"><button data-select-item>All</button></li>
+                            <li class="select-item" role="option"><button data-select-item>Data Analysis</button></li>
+                            <li class="select-item" role="option"><button data-select-item>Machine Learning</button></li>
+                            <li class="select-item" role="option"><button data-select-item>Web Development</button></li>
+                            <li class="select-item" role="option"><button data-select-item>Embedded &amp; IoT</button></li>
                         </ul>
                     </div>
 
                     <!-- Project Items -->
-                    <ul class="project-list">
-                        <li class="project-item active" data-filter-item data-category="data analysis">
-                            <a href="https://github.com/Joseecodm/data-analysis-project">
+                    <ul class="project-list" id="project-list" role="list" aria-live="polite" aria-label="Portfolio projects">
+                        <li class="project-item active" data-filter-item data-category="data analysis" role="listitem">
+                            <a href="https://github.com/Joseecodm/data-analysis-project" target="_blank" rel="noopener noreferrer" aria-label="View Sales Data Analysis project on GitHub">
                                 <figure class="project-img">
-                                    <div class="project-item-icon-box">
+                                    <div class="project-item-icon-box" aria-hidden="true">
                                         <ion-icon name="eye-outline"></ion-icon>
                                     </div>
-                                    <img src="assets/working.jpg" alt="Sales Data Analysis" loading="lazy" />
+                                    <img src="assets/working.jpg" alt="Sales Data Analysis project screenshot showing charts and visualizations" loading="lazy" />
                                 </figure>
                                 <h3 class="project-title">Sales Data Analysis</h3>
                                 <p class="project-category">Data Analysis</p>
                             </a>
                         </li>
 
-                        <li class="project-item active" data-filter-item data-category="data analysis">
-                            <a href="https://github.com/Joseecodm/financial-analysis">
+                        <li class="project-item active" data-filter-item data-category="data analysis" role="listitem">
+                            <a href="https://github.com/Joseecodm/financial-analysis" target="_blank" rel="noopener noreferrer" aria-label="View Financial Data Visualization project on GitHub">
                                 <figure class="project-img">
-                                    <div class="project-item-icon-box">
+                                    <div class="project-item-icon-box" aria-hidden="true">
                                         <ion-icon name="eye-outline"></ion-icon>
                                     </div>
-                                    <img src="assets/working.jpg" alt="Financial Data Visualization" loading="lazy" />
+                                    <img src="assets/working.jpg" alt="Financial Data Visualization project with interactive dashboards and financial charts" loading="lazy" />
                                 </figure>
                                 <h3 class="project-title">Financial Data Visualization</h3>
                                 <p class="project-category">Data Analysis</p>
                             </a>
                         </li>
 
-                        <li class="project-item active" data-filter-item data-category="machine learning">
-                            <a href="https://github.com/Joseecodm/machine-learning-project">
+                        <li class="project-item active" data-filter-item data-category="machine learning" role="listitem">
+                            <a href="https://github.com/Joseecodm/machine-learning-project" target="_blank" rel="noopener noreferrer" aria-label="View Housing Price Prediction machine learning project on GitHub">
                                 <figure class="project-img">
-                                    <div class="project-item-icon-box">
+                                    <div class="project-item-icon-box" aria-hidden="true">
                                         <ion-icon name="eye-outline"></ion-icon>
                                     </div>
-                                    <img src="assets/working.jpg" alt="Housing Price Prediction" loading="lazy" />
+                                    <img src="assets/working.jpg" alt="Housing Price Prediction machine learning model interface and results" loading="lazy" />
                                 </figure>
                                 <h3 class="project-title">Housing Price Prediction</h3>
                                 <p class="project-category">Machine Learning</p>
                             </a>
                         </li>
 
-                        <li class="project-item active" data-filter-item data-category="machine learning">
-                            <a href="https://github.com/Joseecodm/image-recognition-project">
+                        <li class="project-item active" data-filter-item data-category="machine learning" role="listitem">
+                            <a href="https://github.com/Joseecodm/image-recognition-project" target="_blank" rel="noopener noreferrer" aria-label="View Image Recognition System project on GitHub">
                                 <figure class="project-img">
-                                    <div class="project-item-icon-box">
+                                    <div class="project-item-icon-box" aria-hidden="true">
                                         <ion-icon name="eye-outline"></ion-icon>
                                     </div>
-                                    <img src="assets/working.jpg" alt="Image Recognition System" loading="lazy" />
+                                    <img src="assets/working.jpg" alt="Image Recognition System demonstrating AI-powered object detection and classification" loading="lazy" />
                                 </figure>
                                 <h3 class="project-title">Image Recognition System</h3>
                                 <p class="project-category">Machine Learning</p>
                             </a>
                         </li>
 
-                        <li class="project-item active" data-filter-item data-category="web development">
-                            <a href="https://Joseecodm.github.io/portfolio-website">
+                        <li class="project-item active" data-filter-item data-category="web development" role="listitem">
+                            <a href="https://Joseecodm.github.io/portfolio-website" target="_blank" rel="noopener noreferrer" aria-label="View Personal Portfolio Website project">
                                 <figure class="project-img">
-                                    <div class="project-item-icon-box">
+                                    <div class="project-item-icon-box" aria-hidden="true">
                                         <ion-icon name="eye-outline"></ion-icon>
                                     </div>
-                                    <img src="assets/working.jpg" alt="Personal Portfolio Website" loading="lazy" />
+                                    <img src="assets/working.jpg" alt="Personal Portfolio Website with responsive design and modern UI elements" loading="lazy" />
                                 </figure>
                                 <h3 class="project-title">Personal Portfolio Website</h3>
                                 <p class="project-category">Web Development</p>
                             </a>
                         </li>
 
-                        <li class="project-item active" data-filter-item data-category="embedded & iot">
-                            <a href="https://github.com/Joseecodm/smart-irrigation-dashboard">
+                        <li class="project-item active" data-filter-item data-category="embedded & iot" role="listitem">
+                            <a href="https://github.com/Joseecodm/smart-irrigation-dashboard" target="_blank" rel="noopener noreferrer" aria-label="View Smart Irrigation System IoT project on GitHub">
                                 <figure class="project-img">
-                                    <div class="project-item-icon-box">
+                                    <div class="project-item-icon-box" aria-hidden="true">
                                         <ion-icon name="eye-outline"></ion-icon>
                                     </div>
-                                    <img src="assets/working.jpg" alt="Smart Irrigation System" loading="lazy" />
+                                    <img src="assets/working.jpg" alt="Smart Irrigation System dashboard showing sensor data and automated controls" loading="lazy" />
                                 </figure>
                                 <h3 class="project-title">Smart Irrigation System</h3>
                                 <p class="project-category">Embedded &amp; IoT</p>
@@ -358,22 +358,22 @@
 
 
 
-            <article class="blog " data-page="blog">
+            <article class="blog " data-page="blog" role="tabpanel" aria-labelledby="blog-heading">
                 <header>
-                    <h2 class="h2 article-title">Blog</h2>
+                    <h2 class="h2 article-title" id="blog-heading">Blog</h2>
                 </header>
-                <section class="blog-posts">
-                    <ul class="blog-posts-list">
-                        <li class="blog-post-item">
-                            <a href="#">
+                <section class="blog-posts" aria-labelledby="blog-heading">
+                    <ul class="blog-posts-list" role="list">
+                        <li class="blog-post-item" role="listitem">
+                            <a href="#" aria-label="Read about AI applied to social networks workshop">
                                 <figure class="blog-banner-box">
-                                    <img src="assets/working.jpg" alt="AI applied to social networks" loading="lazy">
+                                    <img src="assets/working.jpg" alt="Workshop presentation about AI applied to social networks with participants" loading="lazy">
                                 </figure>
 
                                 <div class="blog-content">
                                     <div class="blog-meta">
                                         <p class="blog-category">Artificial Intelligence</p>
-                                        <span class="dot"></span>
+                                        <span class="dot" aria-hidden="true"></span>
                                         <time datetime="2024-06-10">Jun 10, 2024</time>
                                     </div>
 
@@ -387,16 +387,16 @@
                             </a>
                         </li>
 
-                        <li class="blog-post-item">
-                            <a href="#">
+                        <li class="blog-post-item" role="listitem">
+                            <a href="#" aria-label="Read about Tableau data visualization workshop">
                                 <figure class="blog-banner-box">
-                                    <img src="assets/working.jpg" alt="Data visualization with Tableau" loading="lazy">
+                                    <img src="assets/working.jpg" alt="Tableau workshop session showing data visualization techniques and dashboard creation" loading="lazy">
                                 </figure>
 
                                 <div class="blog-content">
                                     <div class="blog-meta">
                                         <p class="blog-category">Data Visualization</p>
-                                        <span class="dot"></span>
+                                        <span class="dot" aria-hidden="true"></span>
                                         <time datetime="2024-05-15">May 15, 2024</time>
                                     </div>
 
@@ -409,16 +409,16 @@
                             </a>
                         </li>
 
-                        <li class="blog-post-item">
-                            <a href="#">
+                        <li class="blog-post-item" role="listitem">
+                            <a href="#" aria-label="Read about structured programming in C++ course">
                                 <figure class="blog-banner-box">
-                                    <img src="assets/working.jpg" alt="Structured programming in C++" loading="lazy">
+                                    <img src="assets/working.jpg" alt="C++ programming course materials and code examples for structured programming concepts" loading="lazy">
                                 </figure>
 
                                 <div class="blog-content">
                                     <div class="blog-meta">
                                         <p class="blog-category">Programming</p>
-                                        <span class="dot"></span>
+                                        <span class="dot" aria-hidden="true"></span>
                                         <time datetime="2023-12-05">Dec 5, 2023</time>
                                     </div>
 
@@ -431,17 +431,17 @@
                             </a>
                         </li>
 
-                        <li class="blog-post-item">
-                            <a href="#">
+                        <li class="blog-post-item" role="listitem">
+                            <a href="#" aria-label="Read about object-oriented programming in C++ course">
                                 <figure class="blog-banner-box">
-                                    <img src="assets/working.jpg" alt="Object-oriented programming in C++"
+                                    <img src="assets/working.jpg" alt="Object-oriented programming course showing class diagrams and C++ OOP concepts"
                                         loading="lazy">
                                 </figure>
 
                                 <div class="blog-content">
                                     <div class="blog-meta">
                                         <p class="blog-category">Programming</p>
-                                        <span class="dot"></span>
+                                        <span class="dot" aria-hidden="true"></span>
                                         <time datetime="2024-01-10">Jan 10, 2024</time>
                                     </div>
 
@@ -454,16 +454,16 @@
                             </a>
                         </li>
 
-                        <li class="blog-post-item">
-                            <a href="#">
+                        <li class="blog-post-item" role="listitem">
+                            <a href="#" aria-label="Read about functional programming in C++ course">
                                 <figure class="blog-banner-box">
-                                    <img src="assets/working.jpg" alt="Functional programming in C++" loading="lazy">
+                                    <img src="assets/working.jpg" alt="Functional programming concepts in C++ with lambda expressions and higher-order functions" loading="lazy">
                                 </figure>
 
                                 <div class="blog-content">
                                     <div class="blog-meta">
                                         <p class="blog-category">Programming</p>
-                                        <span class="dot"></span>
+                                        <span class="dot" aria-hidden="true"></span>
                                         <time datetime="2024-02-20">Feb 20, 2024</time>
                                     </div>
 
@@ -478,38 +478,47 @@
                     </ul>
                 </section>
             </article>
-            <article class="contact " data-page="contact">
+            <article class="contact " data-page="contact" role="tabpanel" aria-labelledby="contact-heading">
                 <header>
-                    <h2 class="h2 article-title">Contact</h2>
+                    <h2 class="h2 article-title" id="contact-heading">Contact</h2>
                 </header>
 
-                <section class="mapbox" data-mapbox>
+                <section class="mapbox" data-mapbox aria-labelledby="location-heading">
+                    <h3 class="sr-only" id="location-heading">Location</h3>
                     <figure>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7488.5237373794635!2d-99.22058886038099!3d20.206436406638502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d3d66879fea89d%3A0xdd896a66614b30fb!2sITSOEH!5e0!3m2!1ses-419!2smx!4v1748557719533!5m2!1ses-419!2smx&maptype=satellite"
-                            width="400" height="300" loading="lazy">
+                            width="400" height="300" loading="lazy" title="Location map showing ITSOEH - José's university location in Tula de Allende, Hidalgo">
                         </iframe>
                     </figure>
                 </section>
 
-                <section class="contact-form">
-                    <h3 class="h3 form-title">Contact Form</h3>
+                <section class="contact-form" aria-labelledby="contact-form-heading">
+                    <h3 class="h3 form-title" id="contact-form-heading">Contact Form</h3>
 
-                    <form action="#" class="form" data-form>
+                    <form action="#" class="form" data-form novalidate>
                         <div class="input-wrapper">
-                            <input type="text" name="fullname" class="form-input" placeholder="Full name" required
-                                data-form-input>
-                            <input type="email" name="email" class="form-input" placeholder="Email Address" required
-                                data-form-input>
+                            <label for="fullname" class="sr-only">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" class="form-input" placeholder="Full name" required
+                                data-form-input aria-describedby="fullname-error">
+                            <div id="fullname-error" class="error-message" role="alert" aria-live="polite"></div>
+                            
+                            <label for="email" class="sr-only">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="Email Address" required
+                                data-form-input aria-describedby="email-error">
+                            <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
                         </div>
 
-                        <textarea name="message" class="form-input" placeholder="Your Message" required
-                            data-form-input=""></textarea>
+                        <label for="message" class="sr-only">Your Message</label>
+                        <textarea id="message" name="message" class="form-input" placeholder="Your Message" required
+                            data-form-input aria-describedby="message-error"></textarea>
+                        <div id="message-error" class="error-message" role="alert" aria-live="polite"></div>
 
-                        <button class="form-btn" type="submit" disabled data-form-btn>
-                            <ion-icon name="paper-plane"></ion-icon>
+                        <button class="form-btn" type="submit" disabled data-form-btn aria-describedby="form-status">
+                            <ion-icon name="paper-plane" aria-hidden="true"></ion-icon>
                             <span>Send Message</span>
                         </button>
+                        <div id="form-status" class="sr-only" role="status" aria-live="polite"></div>
                     </form>
                 </section>
             </article>
