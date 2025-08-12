@@ -1,20 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
- --jet: rgba(35, 42, 35, 0.7);
-  --onyx: rgba(46, 58, 46, 0.6);
-  --eerie-black1: rgba(26, 33, 26, 0.3);
-  --eerie-black2: rgba(22, 28, 22, 0.25);
-  --smoky-black: rgba(16, 21, 16, 0.18);
-  --light-gray: rgba(191, 200, 191, 0.7);
-  --light-gray70: rgba(191, 200, 191, 0.5);    
-  --white1: rgba(248, 248, 248, 1);            
-  --white2: rgba(230, 230, 230, 1);            
+  /* Enhanced color variables for better accessibility */
+  --jet: rgba(35, 42, 35, 0.9);
+  --onyx: rgba(46, 58, 46, 0.8);
+  --eerie-black1: rgba(26, 33, 26, 0.5);
+  --eerie-black2: rgba(22, 28, 22, 0.45);
+  --smoky-black: rgba(16, 21, 16, 0.3);
+  --light-gray: rgba(220, 225, 220, 0.95);
+  --light-gray70: rgba(200, 210, 200, 0.8);    
+  --white1: rgba(255, 255, 255, 1);            
+  --white2: rgba(245, 245, 245, 1);            
   --blue-accent: rgba(63, 167, 214, 1);        
   --blue-accent-light: rgba(127, 216, 247, 1); 
-  --light-gray: rgba(191, 200, 191, 1);       
-  --light-gray70: rgba(191, 200, 191, 0.7);
-  --bittersweet-shimmer: rgba(184, 107, 107, 1); 
+  --bittersweet-shimmer: rgba(220, 38, 127, 1); 
 
   --text-gradient-blue: linear-gradient(
     to right,
@@ -23,13 +22,13 @@
   );
   --bg-gradient-onyx: linear-gradient(
     to bottom right,
-    rgba(35, 42, 35, 0.5) 3%,
-    rgba(16, 21, 16, 0.2) 97%
+    rgba(35, 42, 35, 0.7) 3%,
+    rgba(16, 21, 16, 0.4) 97%
   );
   --bg-gradient-jet: linear-gradient(
     145deg,                               
-    rgba(255, 255, 255, 0.06) 0%,         
-    rgba(0, 0, 0, 0.15) 100%              
+    rgba(255, 255, 255, 0.1) 0%,         
+    rgba(0, 0, 0, 0.25) 100%              
   );
   --bg-gradient-blue1: linear-gradient(
     to bottom right,
@@ -38,14 +37,14 @@
   );
   --bg-gradient-blue2: linear-gradient(
       135deg,
-      rgba(127, 216, 247, 0.25) 0%,
+      rgba(127, 216, 247, 0.35) 0%,
       rgba(63, 167, 214, 0) 59.86%
     ),
     #1a211a;
   --border-gradient-onyx: linear-gradient(
     to bottom right,
-    rgba(35, 42, 35, 0.5) 0%,
-    rgba(35, 42, 35, 0) 50%
+    rgba(35, 42, 35, 0.7) 0%,
+    rgba(35, 42, 35, 0.1) 50%
   );
 
   --jet: hsl(0, 0%, 22%);
@@ -132,7 +131,111 @@ textarea {
 }
 
 :focus {
-  outline-color: var(--blue-accent);
+  outline: 2px solid var(--blue-accent);
+  outline-offset: 2px;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 20px;
+  background: rgba(20, 25, 20, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(63, 167, 214, 0.3);
+  color: var(--blue-accent);
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: var(--fw600);
+  font-size: var(--fs6);
+  z-index: 10000;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(31, 38, 135, 0.2);
+}
+
+.skip-link:focus {
+  top: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 2px solid var(--blue-accent);
+  color: var(--white1);
+  outline: 2px solid var(--blue-accent-light);
+  outline-offset: 3px;
+  box-shadow: 
+    0 8px 32px rgba(63, 167, 214, 0.4),
+    0 0 20px rgba(127, 216, 247, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(2px) scale(1.05);
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Error messages */
+.error-message {
+  color: var(--bittersweet-shimmer);
+  font-size: var(--fs8);
+  margin-top: 4px;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --bg-gradient-onyx: linear-gradient(
+      to bottom right,
+      rgba(0, 0, 0, 0.8) 3%,
+      rgba(0, 0, 0, 0.6) 97%
+    );
+    --light-gray: rgba(255, 255, 255, 0.9);
+    --light-gray70: rgba(255, 255, 255, 0.8);
+  }
+  
+  .sidebar, article {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .skip-link {
+    transition: none;
+  }
+}
+
+/* Focus management for interactive elements */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--blue-accent);
+  outline-offset: 2px;
 }
 
 html, body {
@@ -158,12 +261,12 @@ main {
 
 .sidebar,
 article {
-  background: rgba(30, 30, 30, 0.1); 
-  border: 1px solid rgba(255, 255, 255, 0.1); 
+  background: rgba(20, 25, 20, 0.25); 
+  border: 1px solid rgba(255, 255, 255, 0.15); 
   border-radius: 20px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(12px); 
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px); 
+  -webkit-backdrop-filter: blur(16px);
   z-index: 1;
   padding: 15px;
   transition: background 0.3s;
