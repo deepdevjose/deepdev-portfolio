@@ -300,6 +300,283 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  //
+  // 6. THEME AND LANGUAGE TOGGLES
+  //
+  const languageToggle = document.getElementById('language-toggle');
+  const themeToggle = document.getElementById('theme-toggle');
+  
+  // Language content object
+  const content = {
+    en: {
+      // Navigation
+      'about': 'About',
+      'resume': 'Resume',
+      'portfolio': 'Portfolio', 
+      'blog': 'Blog',
+      'contact': 'Contact',
+      
+      // About section
+      'about-title': 'About me',
+      'about-p1': 'I drive technological innovation by integrating software, hardware, and user experience—combining analytical thinking with practical creativity.',
+      'about-p2': 'I lead entrepreneurial projects with an unwavering commitment to excellence, underpinned by five years of hands-on programming expertise.',
+      'services-title': 'What I\'m doing',
+      'service-1-title': 'Data Analysis & Machine Learning',
+      'service-1-text': 'Developing data-driven solutions and building intelligent systems with cutting-edge tools and techniques.',
+      'service-2-title': 'Web & Desktop Applications', 
+      'service-2-text': 'Designing and deploying sleek, user-friendly websites and standalone Windows executables.',
+      'service-3-title': 'Embedded & IoT Prototyping',
+      'service-3-text': 'Creating real-world IoT solutions with Arduino, ESP32, and MQTT dashboards for smart automation.',
+      
+      // Resume section
+      'resume-title': 'Resume',
+      'education-title': 'Education',
+      'skills-title': 'Certifications & Skills',
+      'edu-diploma': 'Programming Technician Diploma, CETIS No. 026',
+      'edu-diploma-date': '2013-2020',
+      'edu-diploma-description': 'Technical diploma focusing on structured programming, OOP, web, and mobile development.',
+      'edu-bachelor': 'Bachelor of Engineering in Information and Communication Technologies, ITSOEH',
+      'edu-bachelor-date': '2023 – Present',
+      'edu-bachelor-description': 'Curriculum focused on artificial intelligence, data analysis, and machine learning projects.',
+      
+      // Portfolio section
+      'portfolio-title': 'Portfolio',
+      'filter-all': 'All',
+      'filter-data': 'Data Analysis',
+      'filter-ml': 'Machine Learning',
+      'filter-web': 'Web Development',
+      'filter-iot': 'Embedded & IoT',
+      
+      // Blog section
+      'blog-title': 'Blog',
+      'blog-1-category': 'Artificial Intelligence',
+      'blog-1-title': 'Workshop: AI applied to social networks',
+      'blog-1-text': 'I conducted a workshop at CEtis 91, Tula de Allende, Hidalgo, where we trained a neural network for object classification using Python. It was a hands-on and enriching experience for attendees interested in Artificial Intelligence.',
+      'blog-2-category': 'Data Visualization',
+      'blog-2-title': 'Workshop: Tableau for data visualization',
+      'blog-2-text': 'At CEtis 91, I delivered a workshop on Tableau, teaching participants how to create interactive visualizations and effectively analyze data. This workshop provided essential tools for understanding and presenting data.',
+      'blog-3-category': 'Programming',
+      'blog-3-title': 'Course: Structured programming in C++',
+      'blog-3-text': 'This course introduced the fundamentals of structured programming in C++, including concepts like functions, arrays, and structures, with a focus on best programming practices.',
+      'blog-4-category': 'Programming',
+      'blog-4-title': 'Course: Object-oriented programming in C++',
+      'blog-4-text': 'We explored object-oriented programming concepts in C++, from creating classes to inheritance and polymorphism, providing a solid foundation in this paradigm.',
+      'blog-5-category': 'Programming',
+      'blog-5-title': 'Course: Functional programming in C++',
+      'blog-5-text': 'An advanced course where we explored the functional paradigm in C++, using lambdas, higher-order functions, and functional structures to write cleaner and more efficient code.',
+      
+      // Contact section
+      'contact-title': 'Contact',
+      'form-title': 'Contact Form',
+      'fullname-placeholder': 'Full name',
+      'email-placeholder': 'Email Address', 
+      'message-placeholder': 'Your Message',
+      'send-message': 'Send Message',
+      
+      // Sidebar
+      'show-contacts': 'Show Contacts',
+      'email-label': 'E-mail',
+      'birthday-label': 'Birthday'
+    },
+    es: {
+      // Navigation
+      'about': 'Sobre mí',
+      'resume': 'Currículum',
+      'portfolio': 'Portafolio',
+      'blog': 'Blog',
+      'contact': 'Contacto',
+
+      // About section
+      'about-title': 'Sobre mí',
+      'about-p1': 'Me encanta impulsar la innovación tecnológica uniendo software, hardware y experiencia de usuario, combinando un pensamiento analítico con un toque creativo y práctico.',
+      'about-p2': 'Lidero proyectos con mentalidad emprendedora y un compromiso total con la calidad, respaldado por más de cinco años de experiencia real en programación.',
+      'services-title': 'Lo que hago',
+      'service-1-title': 'Análisis de Datos e Inteligencia Artificial',
+      'service-1-text': 'Creo soluciones basadas en datos y desarrollo sistemas inteligentes usando herramientas y técnicas modernas.',
+      'service-2-title': 'Aplicaciones Web y de Escritorio',
+      'service-2-text': 'Diseño y desarrollo sitios web atractivos y fáciles de usar, así como aplicaciones ejecutables para Windows.',
+      'service-3-title': 'Sistemas Embebidos e IoT',
+      'service-3-text': 'Desarrollo soluciones IoT funcionales con Arduino, ESP32 y paneles MQTT para automatizar de forma inteligente.',
+
+      // Resume section
+      'resume-title': 'Currículum',
+      'education-title': 'Formación Académica',
+      'skills-title': 'Certificaciones y Habilidades',
+      'edu-diploma': 'Técnico en Programación, CETIS No. 026',
+      'edu-diploma-date': '2013-2020',
+      'edu-diploma-description': 'Formación técnica en programación estructurada, POO, desarrollo web y móvil.',
+      'edu-bachelor': 'Ingeniería en Tecnologías de la Información y Comunicaciones, ITSOEH',
+      'edu-bachelor-date': '2023 – Presente',
+      'edu-bachelor-description': 'Enfoque en inteligencia artificial, análisis de datos y proyectos de machine learning.',
+
+      // Portfolio section
+      'portfolio-title': 'Portafolio',
+      'filter-all': 'Todos',
+      'filter-data': 'Análisis de datos',
+      'filter-ml': 'Machine Learning',
+      'filter-web': 'Desarrollo web',
+      'filter-iot': 'Sistemas embebidos e IoT',
+
+      // Blog section
+      'blog-title': 'Blog',
+
+      // Post 1: IA aplic. a redes sociales
+      'blog-1-category': 'Inteligencia Artificial',
+      'blog-1-title': 'Taller: IA aplicada a redes sociales',
+      'blog-1-text': 'Impartí un taller en el CEtis 91 (Tula de Allende, Hgo.) donde entrenamos una red neuronal para clasificar objetos con Python. Fue súper práctico y la banda salió motivada para seguir en IA.',
+
+      // Post 2: Tableau
+      'blog-2-category': 'Visualización de datos',
+      'blog-2-title': 'Taller: Tableau para visualización de datos',
+      'blog-2-text': 'Mostré cómo crear visualizaciones interactivas y dashboards para analizar información y tomar decisiones con datos, de forma clara y directa.',
+
+      // Post 3: C++ estructurado
+      'blog-3-category': 'Programación',
+      'blog-3-title': 'Curso: Programación estructurada en C++',
+      'blog-3-text': 'Vimos lo esencial: funciones, arreglos y estructuras, con buenas prácticas para escribir código claro y mantenible.',
+
+      // Post 4: C++ POO
+      'blog-4-category': 'Programación',
+      'blog-4-title': 'Curso: Programación orientada a objetos en C++',
+      'blog-4-text': 'Trabajamos clases, herencia y polimorfismo con ejemplos prácticos para aterrizar la POO en proyectos reales.',
+
+      // Post 5: C++ funcional
+      'blog-5-category': 'Programación',
+      'blog-5-title': 'Curso: Programación funcional en C++',
+      'blog-5-text': 'Exploramos lambdas y funciones de orden superior para escribir código más limpio y expresivo al estilo funcional.',
+
+      // Contact section
+      'contact-title': 'Contacto',
+      'form-title': 'Formulario de contacto',
+      'fullname-placeholder': 'Nombre completo',
+      'email-placeholder': 'Correo electrónico',
+      'message-placeholder': 'Escribe tu mensaje',
+      'send-message': 'Enviar mensaje',
+
+      // Sidebar
+      'show-contacts': 'Mostrar contactos',
+      'email-label': 'Correo',
+      'birthday-label': 'Fecha de nacimiento'
+    }
+  };
+
+  // Initialize settings from localStorage
+  const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+  const savedLang = localStorage.getItem('portfolio-language') || 'en';
+  
+  // Apply saved settings
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  document.documentElement.setAttribute('data-lang', savedLang);
+  
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-pressed', savedTheme === 'light');
+    const themeIcon = themeToggle.querySelector('ion-icon');
+    if (themeIcon) {
+      themeIcon.name = savedTheme === 'light' ? 'sunny-outline' : 'moon-outline';
+    }
+  }
+  
+  if (languageToggle) {
+    languageToggle.setAttribute('aria-pressed', savedLang === 'es');
+  }
+
+  // Update content based on language
+  const updateContent = (lang) => {
+    Object.keys(content[lang]).forEach(key => {
+      const elements = document.querySelectorAll(`[data-text="${key}"]`);
+      elements.forEach(el => {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = content[lang][key];
+        } else {
+          el.textContent = content[lang][key];
+        }
+      });
+    });
+  };
+
+  // Theme toggle functionality
+  if (themeToggle) {
+    const handleThemeToggle = () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('portfolio-theme', newTheme);
+      
+      themeToggle.setAttribute('aria-pressed', newTheme === 'light');
+      
+      const themeIcon = themeToggle.querySelector('ion-icon');
+      if (themeIcon) {
+        themeIcon.style.transform = 'scale(0.8) rotate(180deg)';
+        setTimeout(() => {
+          themeIcon.name = newTheme === 'light' ? 'sunny-outline' : 'moon-outline';
+          themeIcon.style.transform = 'scale(1) rotate(0deg)';
+        }, 150);
+      }
+
+      // Announce theme change
+      const statusEl = document.getElementById('nav-status');
+      if (statusEl) {
+        statusEl.textContent = `Theme switched to ${newTheme} mode`;
+      }
+    };
+
+    themeToggle.addEventListener('click', handleThemeToggle);
+    themeToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleThemeToggle();
+      }
+    });
+  }
+
+  // Language toggle functionality  
+  if (languageToggle) {
+    const handleLanguageToggle = () => {
+      const currentLang = document.documentElement.getAttribute('data-lang');
+      const newLang = currentLang === 'en' ? 'es' : 'en';
+      
+      document.documentElement.setAttribute('data-lang', newLang);
+      document.documentElement.setAttribute('lang', newLang);
+      localStorage.setItem('portfolio-language', newLang);
+      
+      languageToggle.setAttribute('aria-pressed', newLang === 'es');
+      
+      // Update content with animation
+      const allTextElements = document.querySelectorAll('[data-text]');
+      allTextElements.forEach(el => {
+        el.style.opacity = '0.7';
+        el.style.transform = 'translateY(-5px)';
+      });
+
+      setTimeout(() => {
+        updateContent(newLang);
+        allTextElements.forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      }, 150);
+
+      // Announce language change
+      const statusEl = document.getElementById('nav-status');
+      if (statusEl) {
+        const langName = newLang === 'es' ? 'Español' : 'English';
+        statusEl.textContent = `Language changed to ${langName}`;
+      }
+    };
+
+    languageToggle.addEventListener('click', handleLanguageToggle);
+    languageToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleLanguageToggle();
+      }
+    });
+  }
+
+  // Initialize content on page load
+  updateContent(savedLang);
 });
 
 // Add status element for screen reader announcements

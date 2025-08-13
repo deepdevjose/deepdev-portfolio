@@ -46,18 +46,36 @@
     rgba(35, 42, 35, 0.7) 0%,
     rgba(35, 42, 35, 0.1) 50%
   );
+}
 
-  --jet: hsl(0, 0%, 22%);
-  --onyx: hsl(240, 1%, 17%);
-  --eerie-black1: hsl(240, 2%, 13%);
-  --eerie-black2: hsl(240, 2%, 12%);
-  --smoky-black: hsl(0, 0%, 7%);
-  --white1: hsl(0, 0%, 100%);
-  --white2: hsl(0, 0%, 98%);
-  --light-gray: hsl(0, 0%, 84%);
-  --light-gray70: hsla(0, 0%, 84%, 0.7);
-  --bittersweet-shimmer: hsl(0, 43%, 51%);
+/* Light Theme Variables */
+[data-theme="light"] {
+  --jet: rgba(200, 200, 200, 0.9);
+  --onyx: rgba(180, 180, 180, 0.8);
+  --eerie-black1: rgba(240, 240, 240, 0.8);
+  --eerie-black2: rgba(250, 250, 250, 0.85);
+  --smoky-black: rgba(255, 255, 255, 0.9);
+  --light-gray: rgba(60, 65, 60, 0.95);
+  --light-gray70: rgba(80, 90, 80, 0.8);    
+  --white1: rgba(20, 20, 20, 1);            
+  --white2: rgba(40, 40, 40, 1);
+  
+  --bg-gradient-onyx: linear-gradient(
+    to bottom right,
+    rgba(240, 240, 240, 0.7) 3%,
+    rgba(255, 255, 255, 0.4) 97%
+  );
+  --bg-gradient-jet: linear-gradient(
+    145deg,                               
+    rgba(0, 0, 0, 0.05) 0%,         
+    rgba(255, 255, 255, 0.15) 100%              
+  );
+}
 
+/* Dark Theme Variables (default - inherits from :root) */
+
+:root {
+  /* Font and size variables */
   --ff-poppins: "Poppins", sans-serif;
 
   --fs1: 24px;
@@ -74,12 +92,14 @@
   --fw500: 500;
   --fw600: 600;
 
+  /* Shadows */
   --shadow1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
   --shadow2: 0px 16px 30px hsla(0, 0%, 0%, 0.25);
   --shadow3: 0px 16px 40px hsla(0, 0%, 0%, 0.25);
   --shadow4: 0px 25px 50px hsla(0, 0%, 0%, 0.15);
   --shadow5: 0px 24px 80px hsla(0, 0%, 0%, 0.25);
 
+  /* Transitions */
   --transition1: 0.25s ease;
   --transition2: 0.5s ease-in-out;
 }
@@ -572,6 +592,173 @@ article.active {
   background: rgba(63, 167, 214, 0.10);
   box-shadow: 0 2px 8px rgba(63, 167, 214, 0.12);
 }
+
+/* TOGGLE CONTROLS */
+.toggle-controls {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0;
+}
+
+.toggle-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.toggle-label {
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-text {
+  color: var(--light-gray);
+  font-size: var(--fs7);
+  font-weight: var(--fw400);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.toggle-switch {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--transition1);
+}
+
+.toggle-track {
+  position: relative;
+  width: 56px;
+  height: 28px;
+  background: rgba(20, 25, 20, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  background: var(--bg-gradient-jet);
+  border: 1px solid var(--blue-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-thumb ion-icon {
+  font-size: 12px;
+  color: var(--blue-accent);
+  transition: all 0.3s ease;
+}
+
+.toggle-options {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  z-index: 1;
+}
+
+.toggle-option {
+  font-size: var(--fs8);
+  color: var(--light-gray70);
+  transition: all 0.3s ease;
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.toggle-option ion-icon {
+  font-size: 11px;
+}
+
+/* Active states */
+.toggle-switch[aria-pressed="true"] .toggle-track {
+  background: rgba(63, 167, 214, 0.15);
+  border-color: var(--blue-accent);
+  box-shadow: 
+    0 0 20px rgba(63, 167, 214, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.toggle-switch[aria-pressed="true"] .toggle-thumb {
+  transform: translateX(28px);
+  background: linear-gradient(145deg, var(--blue-accent), var(--blue-accent-light));
+  border-color: var(--blue-accent-light);
+  box-shadow: 0 0 15px rgba(63, 167, 214, 0.4);
+}
+
+.toggle-switch[aria-pressed="true"] .toggle-thumb ion-icon {
+  color: var(--white1);
+  transform: scale(1.1);
+}
+
+.toggle-switch[aria-pressed="true"] .toggle-option.right {
+  opacity: 1;
+  color: var(--blue-accent);
+  font-weight: var(--fw500);
+}
+
+.toggle-switch[aria-pressed="false"] .toggle-option.left {
+  opacity: 1;
+  color: var(--light-gray);
+  font-weight: var(--fw500);
+}
+
+/* Hover and focus states */
+.toggle-switch:hover .toggle-track,
+.toggle-switch:focus .toggle-track {
+  border-color: var(--blue-accent);
+  box-shadow: 0 0 0 2px rgba(63, 167, 214, 0.2);
+}
+
+.toggle-switch:focus {
+  outline: 2px solid var(--blue-accent);
+  outline-offset: 3px;
+}
+
+/* Theme transition animation */
+body {
+  transition: 
+    background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar,
+article,
+.navbar {
+  transition: 
+    background 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Language-specific content */
+[data-lang="en"] .lang-es { display: none !important; }
+[data-lang="es"] .lang-en { display: none !important; }
 
 /*NAVBAR*/
 
