@@ -420,21 +420,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Blog section
       'blog-title': 'Blog',
+
+      // Post 1: IA aplic. a redes sociales
       'blog-1-category': 'Inteligencia Artificial',
       'blog-1-title': 'Taller: IA aplicada a redes sociales',
-      'blog-1-text': 'Impartí un taller en CEtis 91, Tula de Allende, Hidalgo, donde entrenamos una red neuronal para clasificación de objetos usando Python. Fue una experiencia práctica y enriquecedora para los asistentes interesados en Inteligencia Artificial.',
-      'blog-2-category': 'Visualización de Datos',
+      'blog-1-text': 'Impartí un taller en el CEtis 91 (Tula de Allende, Hgo.) donde entrenamos una red neuronal para clasificar objetos con Python. Fue súper práctico y la banda salió motivada para seguir en IA.',
+
+      // Post 2: Tableau
+      'blog-2-category': 'Visualización de datos',
       'blog-2-title': 'Taller: Tableau para visualización de datos',
-      'blog-2-text': 'En CEtis 91, impartí un taller sobre Tableau, enseñando a los participantes cómo crear visualizaciones interactivas y analizar datos de manera efectiva. Este taller proporcionó herramientas esenciales para comprender y presentar datos.',
+      'blog-2-text': 'Mostré cómo crear visualizaciones interactivas y dashboards para analizar información y tomar decisiones con datos, de forma clara y directa.',
+
+      // Post 3: C++ estructurado
       'blog-3-category': 'Programación',
       'blog-3-title': 'Curso: Programación estructurada en C++',
-      'blog-3-text': 'Este curso introdujo los fundamentos de la programación estructurada en C++, incluyendo conceptos como funciones, arreglos y estructuras, con enfoque en las mejores prácticas de programación.',
+      'blog-3-text': 'Vimos lo esencial: funciones, arreglos y estructuras, con buenas prácticas para escribir código claro y mantenible.',
+
+      // Post 4: C++ POO
       'blog-4-category': 'Programación',
       'blog-4-title': 'Curso: Programación orientada a objetos en C++',
-      'blog-4-text': 'Exploramos los conceptos de programación orientada a objetos en C++, desde la creación de clases hasta herencia y polimorfismo, proporcionando una base sólida en este paradigma.',
+      'blog-4-text': 'Trabajamos clases, herencia y polimorfismo con ejemplos prácticos para aterrizar la POO en proyectos reales.',
+
+      // Post 5: C++ funcional
       'blog-5-category': 'Programación',
       'blog-5-title': 'Curso: Programación funcional en C++',
-      'blog-5-text': 'Un curso avanzado donde exploramos el paradigma funcional en C++, utilizando lambdas, funciones de orden superior y estructuras funcionales para escribir código más limpio y eficiente.',
+      'blog-5-text': 'Exploramos lambdas y funciones de orden superior para escribir código más limpio y expresivo al estilo funcional.',
 
       // Contact section
       'contact-title': 'Contacto',
