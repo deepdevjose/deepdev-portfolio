@@ -497,10 +497,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Theme toggle functionality
   if (themeToggle) {
-    const handleThemeToggle = () => {
+    const handleThemeToggle = (event) => {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       
+      // Get click position for ripple effect
+      const rect = themeToggle.getBoundingClientRect();
+      const x = event?.clientX ? ((event.clientX - rect.left) / rect.width) * 100 : 50;
+      const y = event?.clientY ? ((event.clientY - rect.top) / rect.height) * 100 : 50;
+      
+      // Set CSS custom properties for ripple position
+      document.documentElement.style.setProperty('--ripple-x', `${x}%`);
+      document.documentElement.style.setProperty('--ripple-y', `${y}%`);
+      
+      // Add transition class for enhanced animation
+      document.body.classList.add('theme-transitioning');
+      
+      // Apply theme change
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('portfolio-theme', newTheme);
       
@@ -515,6 +528,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 150);
       }
 
+      // Remove transition class after animation
+      setTimeout(() => {
+        document.body.classList.remove('theme-transitioning');
+      }, 600);
+
       // Announce theme change
       const statusEl = document.getElementById('nav-status');
       if (statusEl) {
@@ -526,7 +544,7 @@ document.addEventListener('DOMContentLoaded', () => {
     themeToggle.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        handleThemeToggle();
+        handleThemeToggle(e);
       }
     });
   }
