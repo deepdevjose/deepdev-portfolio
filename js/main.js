@@ -300,6 +300,199 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  //
+  // 6. THEME AND LANGUAGE TOGGLES
+  //
+  const languageToggle = document.getElementById('language-toggle');
+  const themeToggle = document.getElementById('theme-toggle');
+  
+  // Language content object
+  const content = {
+    en: {
+      // Navigation
+      'about': 'About',
+      'resume': 'Resume',
+      'portfolio': 'Portfolio', 
+      'blog': 'Blog',
+      'contact': 'Contact',
+      
+      // About section
+      'about-title': 'About me',
+      'about-p1': 'I drive technological innovation by integrating software, hardware, and user experience—combining analytical thinking with practical creativity.',
+      'about-p2': 'I lead entrepreneurial projects with an unwavering commitment to excellence, underpinned by five years of hands-on programming expertise.',
+      'services-title': 'What I\'m doing',
+      'service-1-title': 'Data Analysis & Machine Learning',
+      'service-1-text': 'Developing data-driven solutions and building intelligent systems with cutting-edge tools and techniques.',
+      'service-2-title': 'Web & Desktop Applications', 
+      'service-2-text': 'Designing and deploying sleek, user-friendly websites and standalone Windows executables.',
+      'service-3-title': 'Embedded & IoT Prototyping',
+      'service-3-text': 'Creating real-world IoT solutions with Arduino, ESP32, and MQTT dashboards for smart automation.',
+      
+      // Contact section
+      'contact-title': 'Contact',
+      'form-title': 'Contact Form',
+      'fullname-placeholder': 'Full name',
+      'email-placeholder': 'Email Address', 
+      'message-placeholder': 'Your Message',
+      'send-message': 'Send Message',
+      
+      // Sidebar
+      'show-contacts': 'Show Contacts',
+      'email-label': 'E-mail',
+      'birthday-label': 'Birthday'
+    },
+    es: {
+      // Navigation
+      'about': 'Acerca de',
+      'resume': 'Currículum',
+      'portfolio': 'Portafolio',
+      'blog': 'Blog', 
+      'contact': 'Contacto',
+      
+      // About section
+      'about-title': 'Acerca de mí',
+      'about-p1': 'Impulso la innovación tecnológica integrando software, hardware y experiencia de usuario—combinando pensamiento analítico con creatividad práctica.',
+      'about-p2': 'Lidero proyectos empresariales con un compromiso inquebrantable hacia la excelencia, respaldado por cinco años de experiencia práctica en programación.',
+      'services-title': 'Lo que hago',
+      'service-1-title': 'Análisis de Datos y Aprendizaje Automático',
+      'service-1-text': 'Desarrollo soluciones basadas en datos y construyo sistemas inteligentes con herramientas y técnicas de vanguardia.',
+      'service-2-title': 'Aplicaciones Web y de Escritorio',
+      'service-2-text': 'Diseño y despliego sitios web elegantes y fáciles de usar, así como ejecutables independientes para Windows.',
+      'service-3-title': 'Prototipado Embebido e IoT',
+      'service-3-text': 'Creo soluciones IoT del mundo real con Arduino, ESP32 y dashboards MQTT para automatización inteligente.',
+      
+      // Contact section
+      'contact-title': 'Contacto',
+      'form-title': 'Formulario de Contacto',
+      'fullname-placeholder': 'Nombre completo',
+      'email-placeholder': 'Dirección de correo',
+      'message-placeholder': 'Tu mensaje',
+      'send-message': 'Enviar Mensaje',
+      
+      // Sidebar
+      'show-contacts': 'Mostrar Contactos',
+      'email-label': 'Correo',
+      'birthday-label': 'Cumpleaños'
+    }
+  };
+
+  // Initialize settings from localStorage
+  const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+  const savedLang = localStorage.getItem('portfolio-language') || 'en';
+  
+  // Apply saved settings
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  document.documentElement.setAttribute('data-lang', savedLang);
+  
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-pressed', savedTheme === 'light');
+    const themeIcon = themeToggle.querySelector('ion-icon');
+    if (themeIcon) {
+      themeIcon.name = savedTheme === 'light' ? 'sunny-outline' : 'moon-outline';
+    }
+  }
+  
+  if (languageToggle) {
+    languageToggle.setAttribute('aria-pressed', savedLang === 'es');
+  }
+
+  // Update content based on language
+  const updateContent = (lang) => {
+    Object.keys(content[lang]).forEach(key => {
+      const elements = document.querySelectorAll(`[data-text="${key}"]`);
+      elements.forEach(el => {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = content[lang][key];
+        } else {
+          el.textContent = content[lang][key];
+        }
+      });
+    });
+  };
+
+  // Theme toggle functionality
+  if (themeToggle) {
+    const handleThemeToggle = () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('portfolio-theme', newTheme);
+      
+      themeToggle.setAttribute('aria-pressed', newTheme === 'light');
+      
+      const themeIcon = themeToggle.querySelector('ion-icon');
+      if (themeIcon) {
+        themeIcon.style.transform = 'scale(0.8) rotate(180deg)';
+        setTimeout(() => {
+          themeIcon.name = newTheme === 'light' ? 'sunny-outline' : 'moon-outline';
+          themeIcon.style.transform = 'scale(1) rotate(0deg)';
+        }, 150);
+      }
+
+      // Announce theme change
+      const statusEl = document.getElementById('nav-status');
+      if (statusEl) {
+        statusEl.textContent = `Theme switched to ${newTheme} mode`;
+      }
+    };
+
+    themeToggle.addEventListener('click', handleThemeToggle);
+    themeToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleThemeToggle();
+      }
+    });
+  }
+
+  // Language toggle functionality  
+  if (languageToggle) {
+    const handleLanguageToggle = () => {
+      const currentLang = document.documentElement.getAttribute('data-lang');
+      const newLang = currentLang === 'en' ? 'es' : 'en';
+      
+      document.documentElement.setAttribute('data-lang', newLang);
+      document.documentElement.setAttribute('lang', newLang);
+      localStorage.setItem('portfolio-language', newLang);
+      
+      languageToggle.setAttribute('aria-pressed', newLang === 'es');
+      
+      // Update content with animation
+      const allTextElements = document.querySelectorAll('[data-text]');
+      allTextElements.forEach(el => {
+        el.style.opacity = '0.7';
+        el.style.transform = 'translateY(-5px)';
+      });
+
+      setTimeout(() => {
+        updateContent(newLang);
+        allTextElements.forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      }, 150);
+
+      // Announce language change
+      const statusEl = document.getElementById('nav-status');
+      if (statusEl) {
+        const langName = newLang === 'es' ? 'Español' : 'English';
+        statusEl.textContent = `Language changed to ${langName}`;
+      }
+    };
+
+    languageToggle.addEventListener('click', handleLanguageToggle);
+    languageToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleLanguageToggle();
+      }
+    });
+  }
+
+  // Initialize content on page load
+  updateContent(savedLang);
 });
 
 // Add status element for screen reader announcements
