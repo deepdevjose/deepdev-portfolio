@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  /* Enhanced color variables for dark theme - increased opacity for consistency */
+  /* Enhanced color variables for dark theme */
   --jet: rgba(15, 23, 35, 0.9);
-  --onyx: rgba(25, 35, 50, 0.9);
-  --eerie-black1: rgba(12, 20, 30, 0.7);
-  --eerie-black2: rgba(18, 25, 38, 0.65);
-  --smoky-black: rgba(8, 15, 25, 0.5);
+  --onyx: rgba(25, 35, 50, 0.85);
+  --eerie-black1: rgba(12, 20, 30, 0.6);
+  --eerie-black2: rgba(18, 25, 38, 0.55);
+  --smoky-black: rgba(8, 15, 25, 0.4);
   --light-gray: rgba(220, 230, 240, 0.95);
   --light-gray70: rgba(180, 190, 210, 0.85);    
   --white1: rgba(255, 255, 255, 1);            
@@ -22,13 +22,13 @@
   );
   --bg-gradient-onyx: linear-gradient(
     to bottom right,
-    rgba(15, 23, 35, 0.9) 3%,
-    rgba(8, 15, 25, 0.6) 97%
+    rgba(15, 23, 35, 0.8) 3%,
+    rgba(8, 15, 25, 0.5) 97%
   );
   --bg-gradient-jet: linear-gradient(
     145deg,                               
-    rgba(255, 255, 255, 0.12) 0%,         
-    rgba(0, 0, 0, 0.4) 100%              
+    rgba(255, 255, 255, 0.08) 0%,         
+    rgba(0, 0, 0, 0.3) 100%              
   );
   --bg-gradient-blue1: linear-gradient(
     to bottom right,
@@ -43,8 +43,8 @@
     #0f1723;
   --border-gradient-onyx: linear-gradient(
     to bottom right,
-    rgba(15, 23, 35, 0.9) 0%,
-    rgba(15, 23, 35, 0.3) 50%
+    rgba(15, 23, 35, 0.8) 0%,
+    rgba(15, 23, 35, 0.2) 50%
   );
 }
 
@@ -324,21 +324,12 @@ textarea {
 .error-message {
   color: var(--bittersweet-shimmer);
   font-size: var(--fs8);
-  margin-top: 6px;
-  margin-bottom: 4px;
-  min-height: 18px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-4px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: block;
-  line-height: 1.3;
+  margin-top: 4px;
+  display: none;
 }
 
 .error-message.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  display: block;
 }
 
 /* High contrast mode support */
@@ -2091,22 +2082,17 @@ body.theme-transitioning::after {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-  margin-bottom: 24px;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-group:not(:last-child) {
-  margin-bottom: 20px;
+  margin-bottom: 32px;
 }
 
 /* Responsive grid for larger screens */
 @media (min-width: 768px) {
   .input-wrapper {
     grid-template-columns: 1fr 1fr;
+  }
+  
+  .input-wrapper .form-input:last-child {
+    grid-column: 1 / -1;
   }
 }
 
@@ -2134,12 +2120,6 @@ body.theme-transitioning::after {
   position: relative;
   resize: vertical;
   min-height: 48px;
-}
-
-/* Textarea specific styles */
-textarea.form-input {
-  min-height: 120px;
-  resize: vertical;
 }
 
 .form-input:hover {
