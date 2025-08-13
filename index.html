@@ -190,35 +190,35 @@
             </article>
             <article class="resume" data-page="resume" role="tabpanel" aria-labelledby="resume-heading">
                 <header>
-                    <h2 class="h2 article-title" id="resume-heading">Resume</h2>
+                    <h2 class="h2 article-title" id="resume-heading" data-text="resume-title">Resume</h2>
                 </header>
 
                 <section class="timeline" aria-labelledby="education-heading">
                     <div class="title-wrapper">
                         <div class="icon-box" aria-hidden="true"><ion-icon name="book-outline"></ion-icon></div>
-                        <h3 class="h3" id="education-heading">Education</h3>
+                        <h3 class="h3" id="education-heading" data-text="education-title">Education</h3>
                     </div>
 
                     <ol class="timeline-list" role="list">
                         <li class="timeline-item" role="listitem">
-                            <h4 class="h4 timeline-item-title">Programming Technician Diploma, CETIS No. 026</h4>
-                            <span>2020-2013</span>
-                            <p class="timeline-text">Technical diploma focusing on structured programming, OOP, web, and
+                            <h4 class="h4 timeline-item-title" data-text="edu-diploma">Programming Technician Diploma, CETIS No. 026</h4>
+                            <span data-text="edu-diploma-date">2020-2013</span>
+                            <p class="timeline-text" data-text="edu-diploma-description">Technical diploma focusing on structured programming, OOP, web, and
                                 mobile development.</p>
                         </li>
 
                         <li class="timeline-item" role="listitem">
-                            <h4 class="h4 timeline-item-title">Bachelor of Engineering in Information and Communication
+                            <h4 class="h4 timeline-item-title" data-text="edu-bachelor">Bachelor of Engineering in Information and Communication
                                 Technologies, ITSOEH</h4>
-                            <span>2023 – Present</span>
-                            <p class="timeline-text">Curriculum focused on artificial intelligence, data analysis, and
+                            <span data-text="edu-bachelor-date">2023 – Present</span>
+                            <p class="timeline-text" data-text="edu-bachelor-description">Curriculum focused on artificial intelligence, data analysis, and
                                 machine learning projects.</p>
                         </li>
                     </ol>
                 </section>
 
                 <section class="skill" aria-labelledby="skills-heading">
-                    <h3 class="h3 skills-title" id="skills-heading">Certifications &amp; Skills</h3>
+                    <h3 class="h3 skills-title" id="skills-heading" data-text="skills-title">Certifications & Skills</h3>
 
                                         <ul class="skills-list content-card" role="list">
                         <li class="skills-item" role="listitem">
@@ -288,17 +288,17 @@
             </article>
             <article class="portfolio" data-page="portfolio" role="tabpanel" aria-labelledby="portfolio-heading">
                 <header>
-                    <h2 class="h2 article-title" id="portfolio-heading">Portfolio</h2>
+                    <h2 class="h2 article-title" id="portfolio-heading" data-text="portfolio-title">Portfolio</h2>
                 </header>
 
                 <section class="projects" aria-labelledby="portfolio-heading">
                     <!-- Filters -->
                     <ul class="filter-list" role="tablist" aria-label="Project filters">
-                        <li class="filter-item" role="presentation"><button class="active" data-filter-btn role="tab" aria-selected="true" aria-controls="project-list" id="filter-all">All</button></li>
-                        <li class="filter-item" role="presentation"><button data-filter-btn role="tab" aria-selected="false" aria-controls="project-list" id="filter-data">Data Analysis</button></li>
-                        <li class="filter-item" role="presentation"><button data-filter-btn role="tab" aria-selected="false" aria-controls="project-list" id="filter-ml">Machine Learning</button></li>
-                        <li class="filter-item" role="presentation"><button data-filter-btn role="tab" aria-selected="false" aria-controls="project-list" id="filter-web">Web Development</button></li>
-                        <li class="filter-item" role="presentation"><button data-filter-btn role="tab" aria-selected="false" aria-controls="project-list" id="filter-iot">Embedded &amp; IoT</button></li>
+                        <li class="filter-item" role="presentation"><button class="active" data-filter-btn role="tab" aria-selected="true" aria-controls="project-list" id="filter-all" data-text="filter-all">All</button></li>
+                        <li class="filter-item" role="presentation"><button data-filter-btn role="tab" aria-selected="false" aria-controls="project-list" id="filter-data" data-text="filter-data">Data Analysis</button></li>
+                        <li class="filter-item" role="presentation"><button data-filter-btn role="tab" aria-selected="false" aria-controls="project-list" id="filter-ml" data-text="filter-ml">Machine Learning</button></li>
+                        <li class="filter-item" role="presentation"><button data-filter-btn role="tab" aria-selected="false" aria-controls="project-list" id="filter-web" data-text="filter-web">Web Development</button></li>
+                        <li class="filter-item" role="presentation"><button data-filter-btn role="tab" aria-selected="false" aria-controls="project-list" id="filter-iot" data-text="filter-iot">Embedded & IoT</button></li>
                     </ul>
 
                     <!-- Mobile Select -->
@@ -405,7 +405,7 @@
 
             <article class="blog " data-page="blog" role="tabpanel" aria-labelledby="blog-heading">
                 <header>
-                    <h2 class="h2 article-title" id="blog-heading">Blog</h2>
+                    <h2 class="h2 article-title" id="blog-heading" data-text="blog-title">Blog</h2>
                 </header>
                 <section class="blog-posts" aria-labelledby="blog-heading">
                     <ul class="blog-posts-list" role="list">
@@ -417,13 +417,13 @@
 
                                 <div class="blog-content">
                                     <div class="blog-meta">
-                                        <p class="blog-category">Artificial Intelligence</p>
+                                        <p class="blog-category" data-text="blog-1-category">Artificial Intelligence</p>
                                         <span class="dot" aria-hidden="true"></span>
                                         <time datetime="2024-06-10">Jun 10, 2024</time>
                                     </div>
 
-                                    <h3 class="h3 blog-item-title">Workshop: AI applied to social networks</h3>
-                                    <p class="blog-text">I conducted a workshop at CEtis 91, Tula de Allende, Hidalgo,
+                                    <h3 class="h3 blog-item-title" data-text="blog-1-title">Workshop: AI applied to social networks</h3>
+                                    <p class="blog-text" data-text="blog-1-text">I conducted a workshop at CEtis 91, Tula de Allende, Hidalgo,
                                         where we trained
                                         a neural network for object classification using Python. It was a hands-on and
                                         enriching experience
@@ -440,13 +440,13 @@
 
                                 <div class="blog-content">
                                     <div class="blog-meta">
-                                        <p class="blog-category">Data Visualization</p>
+                                        <p class="blog-category" data-text="blog-2-category">Data Visualization</p>
                                         <span class="dot" aria-hidden="true"></span>
                                         <time datetime="2024-05-15">May 15, 2024</time>
                                     </div>
 
-                                    <h3 class="h3 blog-item-title">Workshop: Tableau for data visualization</h3>
-                                    <p class="blog-text">At CEtis 91, I delivered a workshop on Tableau, teaching
+                                    <h3 class="h3 blog-item-title" data-text="blog-2-title">Workshop: Tableau for data visualization</h3>
+                                    <p class="blog-text" data-text="blog-2-text">At CEtis 91, I delivered a workshop on Tableau, teaching
                                         participants how to create
                                         interactive visualizations and effectively analyze data. This workshop provided
                                         essential tools for understanding and presenting data.</p>
@@ -462,13 +462,13 @@
 
                                 <div class="blog-content">
                                     <div class="blog-meta">
-                                        <p class="blog-category">Programming</p>
+                                        <p class="blog-category" data-text="blog-3-category">Programming</p>
                                         <span class="dot" aria-hidden="true"></span>
                                         <time datetime="2023-12-05">Dec 5, 2023</time>
                                     </div>
 
-                                    <h3 class="h3 blog-item-title">Course: Structured programming in C++</h3>
-                                    <p class="blog-text">This course introduced the fundamentals of structured
+                                    <h3 class="h3 blog-item-title" data-text="blog-3-title">Course: Structured programming in C++</h3>
+                                    <p class="blog-text" data-text="blog-3-text">This course introduced the fundamentals of structured
                                         programming in C++,
                                         including concepts like functions, arrays, and structures, with a focus on best
                                         programming practices.</p>
@@ -485,13 +485,13 @@
 
                                 <div class="blog-content">
                                     <div class="blog-meta">
-                                        <p class="blog-category">Programming</p>
+                                        <p class="blog-category" data-text="blog-4-category">Programming</p>
                                         <span class="dot" aria-hidden="true"></span>
                                         <time datetime="2024-01-10">Jan 10, 2024</time>
                                     </div>
 
-                                    <h3 class="h3 blog-item-title">Course: Object-oriented programming in C++</h3>
-                                    <p class="blog-text">We explored object-oriented programming concepts in C++, from
+                                    <h3 class="h3 blog-item-title" data-text="blog-4-title">Course: Object-oriented programming in C++</h3>
+                                    <p class="blog-text" data-text="blog-4-text">We explored object-oriented programming concepts in C++, from
                                         creating classes
                                         to inheritance and polymorphism, providing a solid foundation in this paradigm.
                                     </p>
@@ -507,13 +507,13 @@
 
                                 <div class="blog-content">
                                     <div class="blog-meta">
-                                        <p class="blog-category">Programming</p>
+                                        <p class="blog-category" data-text="blog-5-category">Programming</p>
                                         <span class="dot" aria-hidden="true"></span>
                                         <time datetime="2024-02-20">Feb 20, 2024</time>
                                     </div>
 
-                                    <h3 class="h3 blog-item-title">Course: Functional programming in C++</h3>
-                                    <p class="blog-text">An advanced course where we explored the functional paradigm in
+                                    <h3 class="h3 blog-item-title" data-text="blog-5-title">Course: Functional programming in C++</h3>
+                                    <p class="blog-text" data-text="blog-5-text">An advanced course where we explored the functional paradigm in
                                         C++, using lambdas,
                                         higher-order functions, and functional structures to write cleaner and more
                                         efficient code.</p>

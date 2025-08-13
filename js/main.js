@@ -329,6 +329,43 @@ document.addEventListener('DOMContentLoaded', () => {
       'service-3-title': 'Embedded & IoT Prototyping',
       'service-3-text': 'Creating real-world IoT solutions with Arduino, ESP32, and MQTT dashboards for smart automation.',
       
+      // Resume section
+      'resume-title': 'Resume',
+      'education-title': 'Education',
+      'skills-title': 'Certifications & Skills',
+      'edu-diploma': 'Programming Technician Diploma, CETIS No. 026',
+      'edu-diploma-date': '2013-2020',
+      'edu-diploma-description': 'Technical diploma focusing on structured programming, OOP, web, and mobile development.',
+      'edu-bachelor': 'Bachelor of Engineering in Information and Communication Technologies, ITSOEH',
+      'edu-bachelor-date': '2023 – Present',
+      'edu-bachelor-description': 'Curriculum focused on artificial intelligence, data analysis, and machine learning projects.',
+      
+      // Portfolio section
+      'portfolio-title': 'Portfolio',
+      'filter-all': 'All',
+      'filter-data': 'Data Analysis',
+      'filter-ml': 'Machine Learning',
+      'filter-web': 'Web Development',
+      'filter-iot': 'Embedded & IoT',
+      
+      // Blog section
+      'blog-title': 'Blog',
+      'blog-1-category': 'Artificial Intelligence',
+      'blog-1-title': 'Workshop: AI applied to social networks',
+      'blog-1-text': 'I conducted a workshop at CEtis 91, Tula de Allende, Hidalgo, where we trained a neural network for object classification using Python. It was a hands-on and enriching experience for attendees interested in Artificial Intelligence.',
+      'blog-2-category': 'Data Visualization',
+      'blog-2-title': 'Workshop: Tableau for data visualization',
+      'blog-2-text': 'At CEtis 91, I delivered a workshop on Tableau, teaching participants how to create interactive visualizations and effectively analyze data. This workshop provided essential tools for understanding and presenting data.',
+      'blog-3-category': 'Programming',
+      'blog-3-title': 'Course: Structured programming in C++',
+      'blog-3-text': 'This course introduced the fundamentals of structured programming in C++, including concepts like functions, arrays, and structures, with a focus on best programming practices.',
+      'blog-4-category': 'Programming',
+      'blog-4-title': 'Course: Object-oriented programming in C++',
+      'blog-4-text': 'We explored object-oriented programming concepts in C++, from creating classes to inheritance and polymorphism, providing a solid foundation in this paradigm.',
+      'blog-5-category': 'Programming',
+      'blog-5-title': 'Course: Functional programming in C++',
+      'blog-5-text': 'An advanced course where we explored the functional paradigm in C++, using lambdas, higher-order functions, and functional structures to write cleaner and more efficient code.',
+      
       // Contact section
       'contact-title': 'Contact',
       'form-title': 'Contact Form',
@@ -344,36 +381,73 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     es: {
       // Navigation
-      'about': 'Acerca de',
+      'about': 'Sobre mí',
       'resume': 'Currículum',
       'portfolio': 'Portafolio',
-      'blog': 'Blog', 
+      'blog': 'Blog',
       'contact': 'Contacto',
-      
+
       // About section
-      'about-title': 'Acerca de mí',
-      'about-p1': 'Impulso la innovación tecnológica integrando software, hardware y experiencia de usuario—combinando pensamiento analítico con creatividad práctica.',
-      'about-p2': 'Lidero proyectos empresariales con un compromiso inquebrantable hacia la excelencia, respaldado por cinco años de experiencia práctica en programación.',
+      'about-title': 'Sobre mí',
+      'about-p1': 'Me encanta impulsar la innovación tecnológica uniendo software, hardware y experiencia de usuario, combinando un pensamiento analítico con un toque creativo y práctico.',
+      'about-p2': 'Lidero proyectos con mentalidad emprendedora y un compromiso total con la calidad, respaldado por más de cinco años de experiencia real en programación.',
       'services-title': 'Lo que hago',
-      'service-1-title': 'Análisis de Datos y Aprendizaje Automático',
-      'service-1-text': 'Desarrollo soluciones basadas en datos y construyo sistemas inteligentes con herramientas y técnicas de vanguardia.',
+      'service-1-title': 'Análisis de Datos e Inteligencia Artificial',
+      'service-1-text': 'Creo soluciones basadas en datos y desarrollo sistemas inteligentes usando herramientas y técnicas modernas.',
       'service-2-title': 'Aplicaciones Web y de Escritorio',
-      'service-2-text': 'Diseño y despliego sitios web elegantes y fáciles de usar, así como ejecutables independientes para Windows.',
-      'service-3-title': 'Prototipado Embebido e IoT',
-      'service-3-text': 'Creo soluciones IoT del mundo real con Arduino, ESP32 y dashboards MQTT para automatización inteligente.',
-      
+      'service-2-text': 'Diseño y desarrollo sitios web atractivos y fáciles de usar, así como aplicaciones ejecutables para Windows.',
+      'service-3-title': 'Sistemas Embebidos e IoT',
+      'service-3-text': 'Desarrollo soluciones IoT funcionales con Arduino, ESP32 y paneles MQTT para automatizar de forma inteligente.',
+
+      // Resume section
+      'resume-title': 'Currículum',
+      'education-title': 'Formación Académica',
+      'skills-title': 'Certificaciones y Habilidades',
+      'edu-diploma': 'Técnico en Programación, CETIS No. 026',
+      'edu-diploma-date': '2013-2020',
+      'edu-diploma-description': 'Formación técnica en programación estructurada, POO, desarrollo web y móvil.',
+      'edu-bachelor': 'Ingeniería en Tecnologías de la Información y Comunicaciones, ITSOEH',
+      'edu-bachelor-date': '2023 – Presente',
+      'edu-bachelor-description': 'Enfoque en inteligencia artificial, análisis de datos y proyectos de machine learning.',
+
+      // Portfolio section
+      'portfolio-title': 'Portafolio',
+      'filter-all': 'Todos',
+      'filter-data': 'Análisis de datos',
+      'filter-ml': 'Machine Learning',
+      'filter-web': 'Desarrollo web',
+      'filter-iot': 'Sistemas embebidos e IoT',
+
+      // Blog section
+      'blog-title': 'Blog',
+      'blog-1-category': 'Inteligencia Artificial',
+      'blog-1-title': 'Taller: IA aplicada a redes sociales',
+      'blog-1-text': 'Impartí un taller en CEtis 91, Tula de Allende, Hidalgo, donde entrenamos una red neuronal para clasificación de objetos usando Python. Fue una experiencia práctica y enriquecedora para los asistentes interesados en Inteligencia Artificial.',
+      'blog-2-category': 'Visualización de Datos',
+      'blog-2-title': 'Taller: Tableau para visualización de datos',
+      'blog-2-text': 'En CEtis 91, impartí un taller sobre Tableau, enseñando a los participantes cómo crear visualizaciones interactivas y analizar datos de manera efectiva. Este taller proporcionó herramientas esenciales para comprender y presentar datos.',
+      'blog-3-category': 'Programación',
+      'blog-3-title': 'Curso: Programación estructurada en C++',
+      'blog-3-text': 'Este curso introdujo los fundamentos de la programación estructurada en C++, incluyendo conceptos como funciones, arreglos y estructuras, con enfoque en las mejores prácticas de programación.',
+      'blog-4-category': 'Programación',
+      'blog-4-title': 'Curso: Programación orientada a objetos en C++',
+      'blog-4-text': 'Exploramos los conceptos de programación orientada a objetos en C++, desde la creación de clases hasta herencia y polimorfismo, proporcionando una base sólida en este paradigma.',
+      'blog-5-category': 'Programación',
+      'blog-5-title': 'Curso: Programación funcional en C++',
+      'blog-5-text': 'Un curso avanzado donde exploramos el paradigma funcional en C++, utilizando lambdas, funciones de orden superior y estructuras funcionales para escribir código más limpio y eficiente.',
+
       // Contact section
       'contact-title': 'Contacto',
-      'form-title': 'Formulario de Contacto',
+      'form-title': 'Formulario de contacto',
       'fullname-placeholder': 'Nombre completo',
-      'email-placeholder': 'Dirección de correo',
-      'message-placeholder': 'Tu mensaje',
-      'send-message': 'Enviar Mensaje',
-      
+      'email-placeholder': 'Correo electrónico',
+      'message-placeholder': 'Escribe tu mensaje',
+      'send-message': 'Enviar mensaje',
+
       // Sidebar
-      'show-contacts': 'Mostrar Contactos',
+      'show-contacts': 'Mostrar contactos',
       'email-label': 'Correo',
-      'birthday-label': 'Cumpleaños'
+      'birthday-label': 'Fecha de nacimiento'
     }
   };
 
