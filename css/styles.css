@@ -1138,7 +1138,8 @@ body.theme-transitioning::after {
 /* SETTINGS PANEL */
 .settings-panel {
   position: fixed;
-  top: 20px;
+  top: auto;
+  bottom: 80px;
   right: 20px;
   background: rgba(12, 20, 35, 0.15);
   backdrop-filter: blur(20px);
@@ -2459,6 +2460,7 @@ textarea.form-input::-webkit-realizer {
 
   .settings-panel {
     top: 15px;
+    bottom: auto;
     right: 15px;
     padding: 12px;
   }
@@ -2767,6 +2769,7 @@ textarea.form-input::-webkit-realizer {
 
   .settings-panel {
     top: 30px;
+    bottom: auto;
     right: 30px;
     padding: 20px;
   }
@@ -2869,6 +2872,7 @@ textarea.form-input::-webkit-realizer {
 
   .settings-panel {
     top: 40px;
+    bottom: auto;
     right: calc(50% - 475px - 40px);
   }
 
@@ -2880,27 +2884,6 @@ textarea.form-input::-webkit-realizer {
     position: relative;
     width: max-content;
     margin: auto;
-  }
-
-  .navbar {
-    position: absolute;
-    bottom: auto;
-    top: 0;
-    left: auto;
-    right: 0;
-    width: max-content;
-    border-radius: 0 20px;
-    padding: 0 20px;
-    box-shadow: none;
-  }
-
-  .navbar-list {
-    gap: 30px;
-    padding: 0 20px;
-  }
-
-  .navbar-link {
-    font-weight: var(--fw500);
   }
 
   .service-list {
@@ -2926,6 +2909,29 @@ textarea.form-input::-webkit-realizer {
 
   .blog-banner-box {
     height: 230px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbar {
+    position: absolute;
+    bottom: auto;
+    top: 0;
+    left: auto;
+    right: 0;
+    width: max-content;
+    border-radius: 0 20px;
+    padding: 0 20px;
+    box-shadow: none;
+  }
+
+  .navbar-list {
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  .navbar-link {
+    font-weight: var(--fw500);
   }
 }
 
@@ -2959,6 +2965,7 @@ textarea.form-input::-webkit-realizer {
 
   .settings-panel {
     top: 50px;
+    bottom: auto;
     right: 50px;
   }
 
