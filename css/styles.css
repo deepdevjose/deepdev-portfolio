@@ -1206,7 +1206,7 @@ body.theme-transitioning::after {
   box-shadow: 
     0 -4px 20px 0 rgba(0, 0, 0, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  z-index: 5;
+  z-index: 15;
   transition: 
     background var(--theme-transition),
     border-color var(--theme-transition),
@@ -2448,6 +2448,19 @@ textarea.form-input::-webkit-realizer {
   }
 }
 
+/* Extra small screens - improve navbar spacing */
+@media (max-width: 374px) {
+  .navbar-link {
+    padding: 15px 4px;
+    font-size: var(--fs5);
+  }
+  
+  .navbar-list {
+    padding: 0 5px;
+    gap: 2px;
+  }
+}
+
 @media (min-width: 450px) {
   .clients-item {
     min-width: calc(33.33% - 10px);
@@ -2932,6 +2945,12 @@ textarea.form-input::-webkit-realizer {
 
   .navbar-link {
     font-weight: var(--fw500);
+  }
+
+  /* Adjust settings panel to avoid navbar conflict */
+  .settings-panel {
+    top: 70px; /* Move below navbar */
+    right: 20px;
   }
 }
 
