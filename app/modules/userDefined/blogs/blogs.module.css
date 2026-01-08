@@ -1,0 +1,233 @@
+.blogSection {
+  margin: 0 auto;
+  margin-top: 150px;
+  max-width: 1000px;
+  width: 95%;
+}
+
+.moreBlogs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 10px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 50px;
+}
+
+/* Editorial Grid Layout */
+.editorialGrid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 20px;
+  min-height: 480px;
+}
+
+/* Hero Card - Left Side */
+.heroCard {
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  padding: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  /* Subtle Liquid Glass */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.heroCard:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 12px 40px color-mix(in srgb, transparent 50%, var(--accent) 50%);
+  transform: translateY(-4px);
+}
+
+.heroCoverImage {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.heroContent {
+  padding: 16px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.heroTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.3;
+  transition: all 0.3s ease;
+}
+
+.heroCard:hover .heroTitle {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.heroDescription {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Secondary Stack - Right Side */
+.secondaryStack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.secondaryCard {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  background-color: var(--blogbg);
+  border-radius: 16px;
+  padding: 10px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, transparent 80%, var(--text) 20%);
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.secondaryCard:hover {
+  border-color: var(--accent);
+  box-shadow: 0px 4px 16px color-mix(in srgb, transparent 70%, var(--accent) 30%);
+  transform: translateX(4px);
+}
+
+.secondaryCoverImage {
+  width: 100px;
+  height: 100%;
+  min-height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.secondaryContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.secondaryTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.secondaryCard:hover .secondaryTitle {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Badges - Micro Glass */
+.categoryBadge {
+  display: inline-block;
+  width: fit-content;
+  padding: 6px 14px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  border-radius: 100px;
+
+  /* Micro Glass */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  transition: all 0.25s ease;
+}
+
+.categoryBadge:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px color-mix(in srgb, transparent 60%, var(--accent) 40%);
+}
+
+.categoryBadgeSmall {
+  display: inline-block;
+  width: fit-content;
+  padding: 4px 10px;
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  border-radius: 100px;
+
+  /* Lighter Glass */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  transition: all 0.25s ease;
+}
+
+/* Date styles */
+.date {
+  display: flex;
+  gap: 5px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.dateSmall {
+  display: flex;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Mobile Responsive */
+@media (max-width: 760px) {
+  .editorialGrid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .heroCard {
+    margin-bottom: 10px;
+  }
+
+  .heroCoverImage {
+    height: 180px;
+  }
+
+  .secondaryCard {
+    flex-direction: row;
+  }
+
+  .secondaryCoverImage {
+    width: 90px;
+    min-height: 70px;
+  }
+}

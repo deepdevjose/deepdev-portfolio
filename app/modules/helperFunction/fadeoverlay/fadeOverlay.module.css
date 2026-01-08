@@ -1,0 +1,11 @@
+.fadeOverlay {
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 110%;
+    height: 1.5rem; /* same as h-16 */
+    background-color: var(--background); /* Tailwind's blue-500 */
+    filter: blur(5px); /* same as blur-3xl */
+    opacity: 1;
+    pointer-events: none; /* optional: make it non-interactive */
+}

@@ -1,0 +1,120 @@
+@reference "tailwindcss";
+
+.aboutMeBox {
+    display: flex;
+    justify-content: space-between;
+    /* left item to left, right item to right */
+    align-items: flex-start;
+    /* background-color: rgb(102, 73, 37); */
+    padding-top: 30px;
+    width: 95%;
+    max-width: 1000px;
+    min-height: 100vh;
+    min-height: 100svh;
+    margin: 0 auto;
+
+
+}
+
+.contentColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.imageColumn {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-top: 160px;
+    /* Editorial alignment */
+    padding-right: 20px;
+}
+
+.avatarWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+}
+
+.avatar {
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: top center;
+
+    filter: grayscale(100%);
+    opacity: 0.95;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Minimal Editorial Border */
+    border-radius: 16px;
+    /* Rounded corners */
+    box-shadow: none;
+    /* Flat */
+
+    mix-blend-mode: normal;
+    transition: none;
+    /* Static */
+}
+
+/* Hover effect removed completely */
+
+.authorName {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 300;
+    /* Light */
+    color: rgba(255, 255, 255, 0.6);
+    /* Soft gray */
+    letter-spacing: 0.15em;
+    /* Wide tracking for editorial signature */
+    text-align: center;
+    font-family: inherit;
+    /* Inherit font from body */
+}
+
+
+.title {
+    font-size: 32px;
+    font-weight: bolder;
+    color: var(--text);
+    line-height: 32px;
+}
+
+.title2 {
+    font-size: 32px;
+    line-height: 16px;
+    font-weight: bolder;
+    color: var(--text-muted);
+}
+
+.para {
+    /* background-color: antiquewhite; */
+    font-size: 16px;
+    max-width: 280px;
+    min-height: 5px;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    line-height: 1.5rem;
+
+}
+
+.sign {
+    /* background-color: rgb(126, 89, 40); */
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    height: 2.6875rem;
+    width: 3.875rem;
+}
+
+/* .copyright {
+    font-size: 1rem;
+    font-weight: bold;
+    color: color-mix(in srgb, var(--text-muted) 50%, black);
+    line-height: 1.5rem;
+
+} */

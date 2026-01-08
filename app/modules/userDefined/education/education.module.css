@@ -1,0 +1,141 @@
+.educationSection {
+    /* background-color: rgba(31, 17, 0, 0.34); */
+    margin: 0 auto;
+    margin-top: 150px;
+    max-width: 1000px;
+    width: 95%;
+    
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      font-size: clamp(2.5rem, 5vw, 3.5rem); /* responsive font size */
+
+    /* font-size: 3rem; */
+    line-height: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    /* background-color: antiquewhite; */
+    margin-bottom: 50px;
+    /* color: var(--text-muted); */
+}
+
+.details {
+    /* background-color: rgb(0, 67, 45); */
+}
+
+.ed1 {
+    /* background-color: aliceblue; */
+    margin-bottom: 40px;
+}
+
+.duration {
+    margin-bottom: 5px;
+    line-height: 14.4px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    /* font-weight: 600; */
+}
+
+.degree {
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 1.5rem;
+
+}
+
+.college {
+    line-height: 16px;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+.cgpa {
+    line-height: 16px;
+    /* font-weight: 400; */
+    font-size: 1rem;
+}
+
+.cgpa span {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.timeline {
+    display: flex;
+    position: relative;
+}
+
+.line {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    /* color: greenyellow; */
+    background: linear-gradient(180deg,
+            var(--accent) 0%,
+            var(--text) 40%,
+            var(--text) 60%,
+            
+            /* var(--background) 80%, */
+            var(--background) 99%);
+}
+
+.ed1 {
+    position: relative;
+    margin-left: 40px;
+    /* push content away from line */
+    margin-bottom: 40px;
+}
+
+.ed1::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    /* aligns with line */
+    top: 0px;
+    /* adjust to align with duration */
+    width: 14px;
+    height: 14px;
+    border-radius: 20%;
+    transform: rotate(45deg);
+    background: var(--text);
+    /* border: 2px solid white; */
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+
+    background: var(--text-muted);
+}
+
+.ed1:first-child::before {
+    background-color: var(--accent);
+    animation: smoothPulse 2.5s infinite ease;
+
+    transform-origin: center;
+}
+
+@keyframes smoothPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px 1px var(--accent);
+    }
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 10px 2px rgba(172, 255, 47, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px 1px var(--accent);
+    }
+}

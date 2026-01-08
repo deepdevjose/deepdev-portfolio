@@ -1,0 +1,66 @@
+.btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 8px 20px;
+    border-radius: 100px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    /* Liquid Glass Effect */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.btn .txt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    line-height: 1rem;
+    z-index: 10;
+    position: relative;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+}
+
+.btn:hover .txt {
+    color: white;
+}
+
+.arrow {
+    height: 1rem;
+    opacity: 0;
+    color: rgba(255, 255, 255, 0.9);
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+    will-change: transform, opacity;
+}
+
+.btn:hover .arrow {
+    transform: translateX(0) rotate(45deg);
+    margin-left: 6px;
+    opacity: 1;
+}
+
+/* Hidden circle - not used in liquid glass style */
+.circle {
+    display: none;
+}

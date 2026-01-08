@@ -1,0 +1,56 @@
+.box {
+    width: fit-content;
+    position: relative;
+    color: hsl(0, 0%, 20%);
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    padding: 0px 10px;
+    cursor: default;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.box:hover {
+        color: hsl(0, 0%, 0%);
+
+    background-color: hsla(0, 0%, 100%, 0.362);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.label {
+    z-index: 1;
+    padding-left: 0px;
+    transition: padding-left 0.3s ease-in-out;
+
+
+
+}
+
+.box:hover .label {
+    padding-left: 15px;
+    transition: padding-left 0.3s ease-in-out;
+
+}
+
+
+.img {
+    position: absolute;
+    left: 10px;
+    transform: translateX(10px);
+    z-index: 0;
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+}
+
+.box:hover .img {
+    transform: translateX(-4px);
+    opacity: 1;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}

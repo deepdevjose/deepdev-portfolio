@@ -1,0 +1,180 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    overflow: hidden;
+
+}
+
+.modal {
+    border: 1px solid color-mix(in srgb, transparent 80%, var(--text) 20%);
+    background-color: var(--background);
+    border-radius: 30px;
+    width: fit-content;
+    height: fit-content;
+    max-height: 95vh;
+    /* ensures real height for the PDF viewer */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
+    overflow: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    /* inner PDF handles scrolling */
+}
+
+.Btnsheader {
+    width: 97%;
+    gap: 10px;
+    /* background-color: aqua; */
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+
+}
+
+.closeBtn {
+    align-self: flex-end;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    /* padding: 10px; */
+    height: 2rem;
+    width: 2rem;
+    border-radius: 100px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+}
+.downloadBtn{
+    align-self: flex-end;
+    border: 2px solid var(--accent);
+    padding: 4px;
+    transform: rotate(180deg);
+    overflow: hidden;
+    
+    color: var(--accent);
+    /* padding: 10px; */
+    height: 2rem;
+    width: 2rem;
+    border-radius: 100px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+        transition: all 0.3s ease-in-out;
+
+}
+
+ .arr1{
+    transform: translateY(0px);
+    transition: all 0.3s ease-in-out;
+}
+.arr2{
+    transform: translateY(0px); 
+    transition: all 0.3s ease-in-out;
+}
+.downloadBtn:hover .arr1{
+    transform: translateY(-40px);
+    transition: all 0.3s ease-in-out;
+}
+.downloadBtn:hover .arr2{
+    transform: translateY(-28px);
+    transition: all 0.3s ease-in-out;
+}
+.downloadBtn:hover {
+    transform: scale(1.1) rotate(180deg);
+    background-color: var(--accent);
+    color: var(--background);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    transition: all 0.3s ease-in-out;
+}
+
+.closeBtn:hover {
+    transform: scale(1.1) rotate(360deg);
+    background-color: var(--accent);
+    color: var(--background);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* .pdfViewer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--popupPdfbg);
+    flex: 1;
+    width: 100%;
+    height: max-content;
+    margin: 0 auto;
+    padding-top: 16px;
+    border-radius: 30px;
+    overflow: hidden;
+} */
+
+.pdfViewer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--popupPdfbg);
+    width: 100%;
+    /* padding: 16px; */
+    border-radius: 25px;
+    /* max-height: 85vh; */
+    min-width: 250px;
+    
+
+    overflow: auto; /* allow scrolling if screen is too small */
+}
+
+.pdfViewer img {
+    max-width: 100%;
+    max-height: 95vh; /* never exceed viewport height */
+    width: auto;
+    height: auto;
+    object-fit: contain; /* maintain aspect ratio, no cropping */
+
+}
+.loader {
+    margin-top: 20px;
+margin-bottom: 20px;
+    /* A fixed, sensible size for the spinner */
+    height: 50px;
+    width: 50px;
+    /* Styling for the spinning circle effect */
+    border: 5px solid var(--accent); /* A lighter, semi-transparent base */
+    border-radius: 50%;
+    transform: scale(1);
+    animation: spin 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: scale(1) rotate(0deg);
+        border-radius: 50%;
+    }
+    50% {
+        transform: scale(0.5) rotate(180deg);
+        border-radius: 20%;
+
+    }
+    100%{
+        transform: scale(1) rotate(360deg);
+        border-radius: 50%;
+
+    }
+}

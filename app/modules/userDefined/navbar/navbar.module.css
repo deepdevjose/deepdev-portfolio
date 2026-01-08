@@ -1,0 +1,151 @@
+.navContainer {
+    position: fixed;
+    top: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 50;
+    pointer-events: none;
+    padding: 0 10px;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+
+.button {
+    /* color: var(--text-muted); */
+    display: flex;
+    font-size: 1rem;
+    font-weight: bolder;
+    padding: 0.2rem 0.8rem;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    isolation: isolate;
+    box-shadow: transparent;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+
+
+}
+.button:hover .circleAnimate {
+    rotate: 225deg;
+    transition: all 0.5s ease-in-out;
+    color: var(--accent);
+}
+
+.button:hover {
+    color: var(--accent);
+    font-weight: bolder;
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scale(1.2);
+    /* box-shadow: var(--navBtn-shadow); */
+    transition: all 0.3s ease-in-out;
+}
+
+.button:active {
+    background-color: hsla(0, 0%, 43%, 0.5);
+    transform: scale(0.8);
+    transition: all 0.1s ease-in-out;
+}
+
+.mobileNav {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 60px;
+    pointer-events: none;
+}
+
+.themeBtn,
+.menuBtn {
+    position: fixed;
+    top: 16px;
+    z-index: 1000;
+    pointer-events: auto;
+}
+
+.themeBtn {
+
+    right: 4.6rem;
+}
+
+.menuBtn {
+    right: 16px;
+}
+
+.menuBar {
+    overflow: hidden;
+    /* background-color: antiquewhite; */
+    border-radius: 30px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 998;
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+    pointer-events: auto;
+}
+
+.navbarMob {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+    height: 100%;
+    width: 100%;
+    /* background-color: aqua; */
+    padding: 50px 5px 5px 5px;
+}
+
+.buttonMob button {
+    display: flex;
+}
+
+.circleAnimate {
+
+    color: var(--text);
+    rotate: 0deg;
+    transition: all 0.5s ease-in-out;
+}
+
+.buttonMob:hover .circleAnimate {
+        color: var(--accent);
+
+   rotate: 225deg;
+;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.buttonMob {
+    /* background-color: blueviolet; */
+
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding: 0.2rem 0.8rem;
+    border-radius: 100px;
+    cursor: pointer;
+    box-shadow: transparent;
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+}
+
+.buttonMob:hover {
+    /* color: #808080; */
+        color: var(--accent);
+
+    font-weight: bolder;
+    transform: scale(1.15);
+    font-weight: bold;
+    /* box-shadow: var(--navBtn-shadow); */
+    transition: all 0.5s ease-in-out;
+}

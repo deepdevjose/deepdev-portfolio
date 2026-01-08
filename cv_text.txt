@@ -1,0 +1,78 @@
+José Manuel Cortés Cerón — IoT, AI & Software Engineer
+Hidalgo, Mexico
+
+| deepdevjose@itsoeh.edu.mx
+
+| +52 55 6011 5704
+
+| GitHub: deepdevjose
+
+Education
+Programming Technician (SEP – CETis 026)
+Completed July 2023
+B.S. in Information and Communication Technologies – Instituto Tecnológico Superior del Occidente del
+Estado de Hidalgo (ITSOEH)
+2023 – Present
+
+Professional Experience
+2023 – Present
+
+Technology Workshop Instructor
+
+• Delivered specialized workshops on AI applied to social media, programming (OOP, structured, and functional),
+data analysis with Tableau, and AI in cybersecurity, demonstrating effective communication and leadership
+skills by training diverse audiences.
+2024
+
+Technology Conference Speaker
+
+• Presented at academic events such as Expo Profesiográfica and CONAINTE, sharing knowledge on AI and
+technology trends to inspire young talent to pursue careers in Information Technology.
+2023 – 2024
+
+Key Academic Achievements
+
+• Winner of the Intercollegiate Programming Rally held at ITSOEH, demonstrating advanced algorithmic
+problem-solving skills under pressure and teamwork.
+• Special guest at the Byron Gálvez homage at ITSOEH, presenting digital museum projects developed to
+preserve his legacy.
+
+Technical Projects
+• Arm Health AI (XJTLU, China): Development of a predictive health platform for a robotic arm using
+AI; integrated an LSTM model for Remaining Useful Life (RUL) prediction with a 3D digital twin interface,
+implementing secure communication protocols for data transmission.
+• Smart Lettuce Crop: IoT system for smart agriculture (lettuce cultivation), featuring environmental monitoring via Arduino (DHT22 sensor), electromagnetism research in agriculture, and a Java (Swing) application
+for data visualization, incorporating AES encryption for data protection and integrity.
+• Java Tutor Dash: Development of a real-time educational dashboard using Firebase (backend) and JavaScript
+(frontend), integrating CI/CD pipelines for continuous deployment and facilitating student progress tracking
+in Java courses.
+• Museo Virtual Byron Gálvez: Full development of an interactive digital museum as part of the paper
+Hybrid Architecture for Intercultural Preservation: Digital Resurrection and Stylistic Propagation of Byron
+Gálvez’s Legacy. Technologies used: Three.js, WebGL, JavaScript, Firebase.
+• RepairSuite-SGTL: Modern repair shop management platform. Features an interactive dashboard, real-time
+KPIs, and modules for service orders, inventory, sales, clients, staff, and suppliers.
+
+1
+
+Technical Skills
+• Programming Languages: Python, C/C++, Java, JavaScript, C#, SQL.
+• AI/ML: LSTM, RUL Prediction, Whisper, LLMs, Pyttsx3, SaaS, Signal Processing, Data Pipelines.
+• IoT: Arduino, ESP32, Node-RED, MQTT, Raspberry Pi.
+• DevOps & Infrastructure: Linux (Rocky, Debian), Docker, Kubernetes.
+• Software & Frameworks: Git, GitHub, Firebase, React, Android Studio, Tailwind, NextJS, Three.js,
+MySQL.
+• Robotics: VEXcode, Firmware, Kinematics, Electrical Optimization, PID Control.
+
+Certifications
+• Certification in ChatGPT Usage – Santander X (May 2025).
+• Certification in Strategic Thinking and Personal Branding (June 2025).
+• Data Science Essentials Certification – Cisco Networking Academy (2024).
+• Internet of Things (IoT) Certification – Cisco Networking Academy (2024).
+• Linux Server Administration Certification (Rocky Linux & Debian) (2025).
+
+Languages
+Spanish (Native); Technical English (Intermediate).
+
+2
+
+

@@ -1,0 +1,267 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* @custom-variant dark (&:is(.dark *)); */
+
+
+
+@theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+
+  --text: var(--text);
+  --background: var(--background);
+  --primary: var(--primary);
+  --secondary: var(--secondary);
+  --accent: var(--accent);
+  --text-muted: var(--text-muted);
+  --border: var(--border);
+  --radious: var(--radious);
+  --navBtn-shadow: var(--navBtn-shadow);
+  --gradient1: var(--gradient1);
+  --gradient2: var(--gradient2);
+  --gradient3: var(--gradient3);
+  --moreProjectBtn:var(--moreProjectBtn);
+  --blogbg:var(--blogbg);
+  --popupPdfbg:var(--popupPdfbg);
+
+}
+
+:root {
+  --popupPdfbg: #FFFFFF;
+  --text: rgb(18, 18, 18);
+  --background: #e0e0e0;
+  --primary: oklch(34.03% 0.17716 296.178);
+  --secondary: hsl(302, 10%, 50%);
+  --accent: #8A2BE2;
+  /* Purple instead of Green */
+  --text-muted: #666666;
+  --border: hsla(269, 48%, 15%, 0.6);
+  --radious: 12px;
+  --navBtn-shadow: rgba(50, 50, 93, 0.25) 0px 15px 30px -12px inset, rgba(0, 0, 0, 0.3) 0px 5px 30px -18px inset;
+  --moreProjectBtn: #533193;
+  --blogbg: hsla(0, 0%, 100%, 0.5);
+
+  --gradient1: linear-gradient(320deg,
+      hsl(269deg 87% 28%) 0%,
+      hsl(269deg 87% 31%) -1%,
+      hsl(269deg 87% 34%) -1%,
+      hsl(269deg 87% 37%) -2%,
+      hsl(269deg 87% 40%) -2%,
+      hsl(269deg 87% 43%) -1%,
+      hsl(269deg 87% 46%) -1%,
+      hsl(269deg 87% 49%) 0%,
+      hsl(269deg 88% 52%) 1%,
+      hsl(269deg 88% 55%) 2%,
+      hsl(269deg 88% 58%) 3%,
+      hsl(269deg 87% 61%) 4%,
+      hsl(269deg 87% 64%) 6%,
+      hsl(269deg 87% 67%) 8%,
+      hsl(269deg 87% 70%) 10%,
+      hsl(269deg 87% 73%) 13%,
+      hsl(269deg 87% 76%) 16%,
+      hsl(269deg 87% 79%) 20%,
+      hsl(269deg 87% 82%) 24%,
+      hsl(269deg 87% 85%) 28%,
+      hsl(268deg 87% 88%) 34%,
+      hsl(269deg 87% 91%) 41%,
+      hsl(269deg 87% 94%) 50%,
+      hsl(268deg 87% 97%) 63%,
+      hsl(0deg 0% 100%) 98%);
+
+  --gradient2: linear-gradient(0deg,
+      hsl(267deg 63% 99%) 81%,
+      hsl(0deg 0% 100%) 100%);
+
+  --gradient3: linear-gradient(180deg,
+      hsl(267deg 63% 99%) 81%,
+      hsl(0deg 0% 100%) 100%);
+  --gradient4: linear-gradient(0deg,
+      hsl(269deg 87% 28%) 0%,
+      hsl(269deg 61% 35%) 10%,
+      hsl(269deg 47% 41%) 18%,
+      hsl(270deg 38% 47%) 26%,
+      hsl(271deg 33% 52%) 33%,
+      hsl(272deg 34% 58%) 40%,
+      hsl(272deg 34% 64%) 47%,
+      hsl(273deg 34% 70%) 54%,
+      hsl(273deg 34% 76%) 61%,
+      hsl(274deg 35% 82%) 69%,
+      hsl(274deg 35% 88%) 77%,
+      hsl(275deg 34% 94%) 87%,
+      hsl(0deg 0% 100%) 100%);
+
+}
+
+.dark {
+  --popupPdfbg: #1A1A1A;
+  --text: rgb(224, 224, 224);
+  --background: #121212;
+  --primary: oklch(69.117% 0.18414 304.564);
+  --secondary: hsl(287, 88%, 90%);
+  --accent: #d8b4fe;
+  /* Light Purple for Dark Mode */
+  --text-muted: #777777;
+  --border: hsla(269, 48%, 80%, 0.3);
+  --navBtn-shadow: rgba(255, 255, 255, 0.137) 0px 15px 30px -12px inset, rgba(255, 255, 255, 0.05) 0px 5px 30px -18px inset;
+  --moreProjectBtn: #AA97CE;
+  --blogbg: rgba(0, 0, 0, 0.5);
+
+  --gradient1: linear-gradient(320deg,
+      hsl(269deg 87% 72%) 0%,
+      hsl(269deg 87% 69%) -1%,
+      hsl(269deg 87% 66%) -1%,
+      hsl(269deg 87% 63%) -2%,
+      hsl(269deg 87% 60%) -2%,
+      hsl(269deg 87% 57%) -1%,
+      hsl(269deg 87% 54%) -1%,
+      hsl(269deg 87% 51%) 0%,
+      hsl(269deg 88% 48%) 1%,
+      hsl(269deg 88% 45%) 2%,
+      hsl(269deg 88% 42%) 3%,
+      hsl(269deg 87% 39%) 4%,
+      hsl(269deg 87% 36%) 6%,
+      hsl(269deg 87% 33%) 8%,
+      hsl(269deg 87% 30%) 10%,
+      hsl(269deg 87% 27%) 13%,
+      hsl(269deg 87% 24%) 16%,
+      hsl(269deg 87% 21%) 20%,
+      hsl(269deg 87% 18%) 24%,
+      hsl(269deg 87% 15%) 28%,
+      hsl(269deg 87% 12%) 34%,
+      hsl(269deg 87% 9%) 41%,
+      hsl(269deg 87% 6%) 50%,
+      hsl(268deg 87% 3%) 63%,
+      hsl(0deg 0% 0%) 98%);
+
+  --gradient2: linear-gradient(0deg,
+      hsl(262deg 29% 15%) 0%,
+      hsl(262deg 29% 14%) 3%,
+      hsl(262deg 28% 14%) 5%,
+      hsl(262deg 28% 13%) 7%,
+      hsl(262deg 27% 13%) 9%,
+      hsl(262deg 27% 12%) 11%,
+      hsl(262deg 26% 12%) 14%,
+      hsl(263deg 26% 11%) 16%,
+      hsl(263deg 25% 11%) 18%,
+      hsl(263deg 25% 10%) 21%,
+      hsl(264deg 25% 10%) 23%,
+      hsl(266deg 25% 9%) 26%,
+      hsl(267deg 25% 9%) 28%,
+      hsl(268deg 25% 8%) 31%,
+      hsl(269deg 26% 8%) 34%,
+      hsl(269deg 27% 7%) 37%,
+      hsl(269deg 28% 7%) 41%,
+      hsl(269deg 29% 6%) 45%,
+      hsl(269deg 31% 5%) 49%,
+      hsl(268deg 33% 4%) 53%,
+      hsl(266deg 34% 4%) 58%,
+      hsl(266deg 35% 3%) 64%,
+      hsl(266deg 35% 2%) 71%,
+      hsl(266deg 35% 1%) 81%,
+      hsl(0deg 0% 0%) 100%);
+
+  --gradient3: linear-gradient(180deg,
+      hsl(264deg 29% 10%) 0%,
+      hsl(265deg 29% 10%) 3%,
+      hsl(266deg 29% 9%) 5%,
+      hsl(267deg 30% 9%) 7%,
+      hsl(268deg 30% 9%) 9%,
+      hsl(268deg 30% 8%) 11%,
+      hsl(269deg 30% 8%) 14%,
+      hsl(269deg 31% 8%) 16%,
+      hsl(269deg 31% 7%) 18%,
+      hsl(269deg 32% 7%) 21%,
+      hsl(269deg 33% 7%) 23%,
+      hsl(269deg 33% 6%) 26%,
+      hsl(269deg 34% 6%) 28%,
+      hsl(269deg 36% 6%) 31%,
+      hsl(269deg 37% 5%) 34%,
+      hsl(269deg 38% 5%) 37%,
+      hsl(268deg 39% 4%) 41%,
+      hsl(267deg 40% 4%) 45%,
+      hsl(266deg 40% 3%) 49%,
+      hsl(266deg 41% 3%) 53%,
+      hsl(266deg 41% 2%) 58%,
+      hsl(266deg 41% 2%) 64%,
+      hsl(266deg 41% 1%) 71%,
+      hsl(266deg 41% 1%) 81%,
+      hsl(0deg 0% 0%) 100%);
+  --gradient4: linear-gradient(0deg,
+      hsl(269deg 87% 72%) 0%,
+      hsl(269deg 80% 66%) 1%,
+      hsl(269deg 72% 60%) 2%,
+      hsl(269deg 66% 54%) 3%,
+      hsl(269deg 58% 49%) 6%,
+      hsl(269deg 51% 43%) 9%,
+      hsl(269deg 44% 37%) 14%,
+      hsl(269deg 37% 31%) 21%,
+      hsl(268deg 30% 25%) 31%,
+      hsl(270deg 22% 19%) 44%,
+      hsl(270deg 15% 13%) 62%,
+      hsl(270deg 5% 7%) 81%,
+      hsl(0deg 0% 2%) 100%);
+}
+
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0px;
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-degular), system-ui, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  line-height: 1.5;
+  font-size: 1rem;
+
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+html,
+body {
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: auto !important;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* a{
+  color: #121212;
+  color: #121212;
+  color: #121212;
+  color: #9880FF;
+  color: #abff2e;
+  color: #00A7A4;
+} */
+
+/* const darkColors = ["#121212", "#1e1e1e", "#2a2a2a", "#abff2e"];
+  // Light mode palette
+  const lightColors = ["#e0e0e0", "#f5f5f5", "#ffffff", "#abff2e"]; */

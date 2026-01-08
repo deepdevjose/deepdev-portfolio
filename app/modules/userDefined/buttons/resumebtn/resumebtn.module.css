@@ -1,0 +1,86 @@
+.ResumeBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 5px 20px;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    /* Liquid Glass Effect */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+    transition: all 0.3s ease-in-out;
+}
+
+.EyeIcon {
+    position: absolute;
+    transform: translateY(-30px) scale(0.5);
+    transition: all 0.3s ease-in-out;
+    z-index: 10;
+    color: var(--background);
+}
+
+.circle {
+    position: absolute;
+    transform: translateY(-40px);
+    z-index: 0;
+    background: var(--accent);
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--background);
+    box-shadow: 0 0 0 2px var(--accent);
+    transition: all 0.3s ease-in-out;
+}
+
+.button {
+    display: block;
+    font-weight: bold;
+    z-index: 1;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.ResumeBtn:hover .button {
+    transform: translateY(40px) scale(0.5);
+}
+
+.ResumeBtn:hover .circle {
+    height: 15px;
+    width: 15px;
+    transform: translateY(-10px) scale(10);
+    transition: all 0.4s ease-in-out;
+}
+
+.ResumeBtn:hover .button {
+    color: var(--background);
+    transition: all 0.4s ease-in-out;
+}
+
+.ResumeBtn:hover .EyeIcon {
+    color: black;
+    transform: translateY(0px) scale(1.1);
+    transition: all 0.4s ease-in-out;
+}
+
+.ResumeBtn:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease-in-out;
+}
+
+.ResumeBtn:active {
+    transform: scale(0.9);
+    transition: all 0.2s ease-in-out;
+}
