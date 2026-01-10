@@ -2,7 +2,7 @@
 
 > A high-performance, immersive developer portfolio built with **Next.js 16**, **TypeScript**, and **WebGL**.
 
-![Portfolio Preview](https://github.com/user-attachments/assets/7ffa0d23-4d24-4609-8410-0d9c71012a26)
+![Portfolio Preview](https://github.com/user-attachments/assets/1a56d597-0c24-4f39-88ee-66fb7175db94)
 
 ## ✨ Overview
 
