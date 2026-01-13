@@ -34,6 +34,7 @@
 
 
 }
+
 .button:hover .circleAnimate {
     rotate: 225deg;
     transition: all 0.5s ease-in-out;
@@ -118,10 +119,10 @@
 }
 
 .buttonMob:hover .circleAnimate {
-        color: var(--accent);
+    color: var(--accent);
 
-   rotate: 225deg;
-;
+    rotate: 225deg;
+    ;
     transition: all 0.5s ease-in-out;
 }
 
@@ -141,11 +142,23 @@
 
 .buttonMob:hover {
     /* color: #808080; */
-        color: var(--accent);
+    color: var(--accent);
 
     font-weight: bolder;
     transform: scale(1.15);
     font-weight: bold;
     /* box-shadow: var(--navBtn-shadow); */
     transition: all 0.5s ease-in-out;
+}
+
+/* Responsive - Small Mobile */
+@media (max-width: 480px) {
+    .themeBtn {
+        right: 4rem;
+    }
+
+    .buttonMob {
+        font-size: 1.5rem;
+        padding: 0.15rem 0.6rem;
+    }
 }

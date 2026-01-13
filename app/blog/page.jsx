@@ -15,7 +15,7 @@ const GlassSurface = dynamic(
     }
 );
 
-const categories = ['All', 'Research', 'Engineering', 'AI', 'Robotics'];
+const categories = ['All', 'Research', 'Engineering', 'AI', 'Robotics', 'STEM'];
 
 export default function BlogIndex() {
     const [searchQuery, setSearchQuery] = useState('');
@@ -155,29 +155,35 @@ export default function BlogIndex() {
                 <section className={style.articlesSection}>
                     {gridArticles.length > 0 ? (
                         <div className={style.articlesGrid}>
-                            {gridArticles.map((article) => (
-                                <Link
-                                    href={`/blog/${article.slug}`}
-                                    key={article.id}
-                                    className={style.articleCard}
-                                >
-                                    <img
-                                        src={article.cover_image}
-                                        alt={article.title}
-                                        className={style.articleCover}
-                                    />
-                                    <div className={style.articleContent}>
-                                        <span className={style.categoryBadgeSmall}>{article.category}</span>
-                                        <h3 className={style.articleTitle}>{article.title}</h3>
-                                        <div className={style.articleMeta}>
-                                            <span>{article.date}</span>
-                                            <span>✦︎</span>
-                                            <span>{article.reading_time}</span>
+                            {gridArticles.map((article, index) => {
+                                // Alternate featured style for first article and every 4th
+                                const isFeatured = index === 0 || index === 4;
+                                const cardClass = `${style.articleCard} ${isFeatured ? style.articleCardFeatured : ''}`;
+
+                                return (
+                                    <Link
+                                        href={`/blog/${article.slug}`}
+                                        key={article.id}
+                                        className={cardClass}
+                                    >
+                                        <img
+                                            src={article.cover_image}
+                                            alt={article.title}
+                                            className={style.articleCover}
+                                        />
+                                        <div className={style.articleContent}>
+                                            <span className={style.categoryBadgeSmall}>{article.category}</span>
+                                            <h3 className={style.articleTitle}>{article.title}</h3>
+                                            <div className={style.articleMeta}>
+                                                <span>{article.date}</span>
+                                                <span>✦︎</span>
+                                                <span>{article.reading_time}</span>
+                                            </div>
+                                            <p className={style.articleDescription}>{article.description}</p>
                                         </div>
-                                        <p className={style.articleDescription}>{article.description}</p>
-                                    </div>
-                                </Link>
-                            ))}
+                                    </Link>
+                                );
+                            })}
                         </div>
                     ) : (
                         <div className={style.noResults}>

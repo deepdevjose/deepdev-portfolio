@@ -240,8 +240,8 @@
 
 .articlesGrid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
 }
 
 .articleCard {
@@ -254,23 +254,38 @@
     transition: all 0.3s ease;
 }
 
+/* Featured card - larger image and more emphasis */
+.articleCardFeatured {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.articleCardFeatured .articleCover {
+    height: 200px;
+}
+
+.articleCardFeatured .articleTitle {
+    font-size: 1.15rem;
+}
+
 .articleCard:hover {
     border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
 .articleCover {
     width: 100%;
-    height: 140px;
+    height: 160px;
     object-fit: cover;
 }
 
 .articleContent {
-    padding: 16px;
+    padding: 18px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
+    flex: 1;
 }
 
 .articleTitle {
@@ -280,28 +295,30 @@
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
 .articleCard:hover .articleTitle {
     text-decoration: underline;
-    text-underline-offset: 2px;
+    text-underline-offset: 3px;
 }
 
 .articleMeta {
     display: flex;
-    gap: 5px;
+    gap: 6px;
     font-size: 0.75rem;
     color: var(--text-muted);
 }
 
 .articleDescription {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
-    line-height: 1.5;
+    line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin: 0;
@@ -338,12 +355,6 @@
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-    .articlesGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 @media (max-width: 760px) {
     .featuredCard {
         grid-template-columns: 1fr;
@@ -355,6 +366,15 @@
 
     .articlesGrid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .articleCover {
+        height: 140px;
+    }
+
+    .articleCardFeatured .articleCover {
+        height: 160px;
     }
 
     .controlsRow {

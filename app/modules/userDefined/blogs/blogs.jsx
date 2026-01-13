@@ -8,44 +8,34 @@ import LinkButton from "../buttons/MoreBlogs/moreBlogs"
 const articles = [
     {
         id: 1,
-        slug: "webgl-virtual-museum",
-        title: "Engineering a WebGL Virtual Museum for Digital Cultural Preservation",
-        description: "Exploring the intersection of 3D rendering, interactive systems, and digital heritage preservation through a web-native museum experience. This project represents the convergence of visual computing, cultural studies, and modern web technologies.",
-        category: "Academic Project",
+        slug: "ai-driven-health-twin",
+        title: "Validating an AI-Driven Health Twin for Industrial Robot Arms",
+        description: "Exploring the design and academic validation of an AI-powered predictive health twin for industrial robot arms, focused on anticipating failures before they propagate into costly shutdowns.",
+        category: "AI Research",
         reading_time: "8 min read",
-        cover_image: "/blogs/museum-cover.png",
-        date: "2024",
+        cover_image: "/blogs/health-twin-cover.jpg",
+        date: "2025 – Present",
         isHero: true
     },
     {
         id: 2,
-        slug: "automated-code-evaluation",
-        title: "Automated Code Evaluation at Classroom Scale Using GitHub Actions",
-        description: "Building a production-grade CI/CD system for Java assignment evaluation serving 120+ concurrent students.",
-        category: "Engineering",
-        reading_time: "7 min read",
-        cover_image: "/blogs/cicd-cover.png",
-        date: "2024"
+        slug: "virtual-dynamic-museum",
+        title: "Engineering a Virtual and Dynamic Museum for Digital Cultural Preservation",
+        description: "Documenting the engineering and deployment of a virtual museum system developed to preserve and present the artistic legacy of Byron Gálvez.",
+        category: "Academic Project",
+        reading_time: "9 min read",
+        cover_image: "/blogs/museum-cover.jpg",
+        date: "2025"
     },
     {
         id: 3,
-        slug: "practical-ai-systems",
-        title: "Designing Practical AI Systems Beyond Demos",
-        description: "Lessons from building applied AI tools in constrained academic environments.",
-        category: "AI Research",
-        reading_time: "6 min read",
-        cover_image: "/blogs/ai-cover.png",
-        date: "2024"
-    },
-    {
-        id: 4,
-        slug: "competitive-robotics-engineering",
-        title: "Engineering Competitive Robotics: Control, Constraints, and Reality",
-        description: "Driver control, sensor fusion, and what competition-level robotics actually teaches.",
-        category: "Robotics",
+        slug: "ai-virtual-psychologist",
+        title: "Designing an AI-Based Virtual Psychologist for Educational Environments",
+        description: "Documenting the design and institutional presentation of an AI-based virtual psychologist for educational infrastructure.",
+        category: "AI Systems",
         reading_time: "9 min read",
-        cover_image: "/blogs/robotics-cover.png",
-        date: "2024"
+        cover_image: "/blogs/ai-psychologist-cover.jpg",
+        date: "2025"
     }
 ];
 

@@ -265,7 +265,13 @@
 }
 
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
+  .cardContainer {
+    height: auto;
+    min-height: 500px;
+    top: 60px;
+  }
+
   .cardBody h1 {
     visibility: hidden;
     line-height: 0rem;
@@ -274,14 +280,19 @@
     margin-bottom: 0px;
   }
 
+  .titleContainer h2 {
+    font-size: 1.2rem;
+    line-height: 1.1rem;
+  }
+
   .titleContainer h3 {
     font-size: 0.9rem;
     line-height: 1rem;
   }
 
   .card {
-
     height: fit-content;
+    min-height: 450px;
   }
 
   .outerBox {
@@ -292,6 +303,10 @@
   .sideBox {
     width: 100%;
     height: auto;
+  }
+
+  .VideoBox {
+    height: 200px;
   }
 
   .sideBox {
@@ -307,5 +322,44 @@
   .box2 {
     flex: 3;
     min-height: 90px;
+  }
+
+  .ldesc {
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardContainer {
+    top: 50px;
+    min-height: auto;
+  }
+
+  .card {
+    padding: 12px;
+    min-height: 400px;
+  }
+
+  .titleContainer h2 {
+    font-size: 1rem;
+  }
+
+  .btnContainer {
+    min-width: 120px;
+  }
+
+  .VideoBox {
+    height: 160px;
+  }
+
+  .ldesc {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+
+  .marquee {
+    font-size: 0.85rem;
   }
 }

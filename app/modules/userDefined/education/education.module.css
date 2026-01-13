@@ -4,14 +4,15 @@
     margin-top: 150px;
     max-width: 1000px;
     width: 95%;
-    
+
 }
 
 .title {
     display: flex;
     justify-content: center;
     align-items: center;
-      font-size: clamp(2.5rem, 5vw, 3.5rem); /* responsive font size */
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    /* responsive font size */
 
     /* font-size: 3rem; */
     line-height: clamp(2.5rem, 5vw, 3.5rem);
@@ -80,7 +81,7 @@
             var(--accent) 0%,
             var(--text) 40%,
             var(--text) 60%,
-            
+
             /* var(--background) 80%, */
             var(--background) 99%);
 }
@@ -130,12 +131,68 @@
         transform: scale(1);
         box-shadow: 0 0 5px 1px var(--accent);
     }
+
     50% {
         transform: scale(1.2);
         box-shadow: 0 0 10px 2px rgba(172, 255, 47, 0.4);
     }
+
     100% {
         transform: scale(1);
         box-shadow: 0 0 5px 1px var(--accent);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .educationSection {
+        margin-top: 100px;
+    }
+
+    .title {
+        margin-bottom: 30px;
+    }
+
+    .degree {
+        font-size: 1.2rem;
+        line-height: 18px;
+    }
+
+    .college {
+        font-size: 1rem;
+        line-height: 14px;
+    }
+
+    .cgpa {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .educationSection {
+        margin-top: 80px;
+    }
+
+    .ed1 {
+        margin-left: 30px;
+        margin-bottom: 30px;
+    }
+
+    .ed1::before {
+        left: -26px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .duration {
+        font-size: 0.8rem;
+    }
+
+    .degree {
+        font-size: 1.1rem;
+    }
+
+    .college {
+        font-size: 0.9rem;
     }
 }

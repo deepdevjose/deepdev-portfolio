@@ -24,6 +24,8 @@ function formatMarkdown(content) {
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
         // Inline code
         .replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>')
+        // Images
+        .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<figure class="article-image"><img src="$2" alt="$1" /><figcaption>$1</figcaption></figure>')
         // Lists
         .replace(/^- (.+)$/gm, '<li>$1</li>')
         // Paragraphs (wrap text blocks)
