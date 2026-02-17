@@ -126,6 +126,7 @@ Designing for that reality requires less hype — and far more systems thinking.
     cover_image: "/blogs/museum-cover.jpg",
     date: "2025",
     tags: ["DigitalHeritage", "WebEngineering", "VirtualMuseum", "AcademicProject", "SystemsDesign"],
+    downloadUrl: "/blogs/Article.pdf",
     content: `
 ## Beyond Digitization
 
