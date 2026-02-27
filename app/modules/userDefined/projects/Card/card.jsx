@@ -6,9 +6,10 @@ import Button from '../../buttons/projectbtn/button';
 import Label from '../../buttons/labels/label';
 import Marquee from "react-fast-marquee";
 import useWindowWidth from '../../../helperFunction/getwidth/getWidth';
+import LazyVideo from '../../../helperFunction/lazyVideo/LazyVideo';
 
 
-const Card = ({ i, title, description, video, videoCaption, videoOverlay, ldesc, marquee1, marquee2, num, liveLink, github, tech1, tech2, tech3, tech4, tech5, itech1, itech2, itech3, itech4, itech5, color, progress, range, targetScale }) => {
+const Card = ({ i, title, description, video, poster, videoCaption, videoOverlay, ldesc, marquee1, marquee2, num, liveLink, github, tech1, tech2, tech3, tech4, tech5, itech1, itech2, itech3, itech4, itech5, color, progress, range, targetScale }) => {
   const windowWidth = useWindowWidth();
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -59,15 +60,15 @@ const Card = ({ i, title, description, video, videoCaption, videoOverlay, ldesc,
                 className={styles.inner}
                 style={{ scale: imageScale }}
               >
-                <video
+                <LazyVideo
                   src={video}
-                  autoPlay
+                  poster={poster}
+                  className={styles.videoPlay}
                   muted
                   loop
                   playsInline
-                  preload="auto"
-                  className={styles.videoPlay}
-
+                  rootMargin="300px"
+                  threshold={0.25}
                 />
                 {videoOverlay && (
                   <div className={styles.videoOverlay}>

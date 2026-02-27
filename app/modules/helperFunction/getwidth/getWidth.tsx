@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 export default function useWindowWidth() {
-  const [width, setWidth] = useState<number | null>(null);
+  // Valor por defecto de 1024 para SSR (desktop-first)
+  const [width, setWidth] = useState<number>(1024);
 
   useEffect(() => {
     const update = () => setWidth(window.innerWidth);

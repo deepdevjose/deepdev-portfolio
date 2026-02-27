@@ -1,11 +1,14 @@
 'use client';
 import style from "./landing.module.css";
-import useWindowWidth from '../../helperFunction/getwidth/getWidth';
-import Wallpaper from "../wallpaper/wallpaper";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
-
-
+// Lazy load Wallpaper (shaders son pesados ~50KB)
+// Fallback: fondo simple durante carga
+const Wallpaper = dynamic(() => import("../wallpaper/wallpaper"), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 m-3 rounded-[29px] bg-gradient-to-br from-[#121212] via-[#1A1A1A] to-[#581c87] dark:from-[#121212] dark:to-[#581c87] light:from-[#ffffff] light:to-[#8b5cf6]" />,
+});
 
 export default function Landing() {
     const [date, setDate] = useState(new Date());
@@ -16,8 +19,6 @@ export default function Landing() {
         }, 1000); // update every second
         return () => clearInterval(interval); // cleanup
     }, []);
-    let width = useWindowWidth();
-    if (width === null) return null;
     return (
         <div className={style.landing}>
             <Wallpaper />

@@ -52,10 +52,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon.png", sizes: "16x16", type: "image/png" },
+      { url: "/josepoicon.jpg", sizes: "32x32", type: "image/jpg" },
+      { url: "/josepoicon.jpg", sizes: "16x16", type: "image/jpg" },
     ],
-    apple: "/favicon.png",
+    apple: "/josepoicon.jpg",
   },
   manifest: "/site.webmanifest",
 }

@@ -1,15 +1,13 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import style from "./aboutme.module.css";
 import { Sign } from "../../../customIcon/index"
-import useWindowWidth from "../../helperFunction/getwidth/getWidth";
 import ResumeBtn from "../buttons/resumebtn/resumebtn"
 import Popup from "../../userDefined/popup/popUp";
 
 export default function AboutMe() {
     const [isOpen, setIsOpen] = useState(false);
-
-    // const Width = useWindowWidth();
 
     return (
         <div className={style.aboutMeBox}>
@@ -29,7 +27,15 @@ export default function AboutMe() {
 
             <div className={style.imageColumn}>
                 <div className={style.avatarWrapper}>
-                    <img src="/avatar.png" alt="DeepDevJose" className={style.avatar} />
+                    <Image 
+                        src="/avatar.png" 
+                        alt="DeepDevJose" 
+                        className={style.avatar}
+                        width={300}
+                        height={300}
+                        priority
+                        sizes="(max-width: 768px) 200px, 300px"
+                    />
                     <p className={style.authorName}>José Manuel Cortes Cerón</p>
                 </div>
             </div>

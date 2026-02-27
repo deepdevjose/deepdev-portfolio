@@ -1,4 +1,17 @@
-// Shared article data for blog pages
+/**
+ * Full Articles Data (SERVER-ONLY)
+ * 
+ * ⚠️ WARNING: DO NOT IMPORT IN CLIENT COMPONENTS
+ * This file contains full markdown content (~1200+ lines).
+ * 
+ * For client components (listings), use articlesMetadata.js instead.
+ * For server components (individual pages), you can use this file.
+ * 
+ * Bundle impact:
+ * - articlesData.js: ~100KB+ (with all markdown content)
+ * - articlesMetadata.js: ~5KB (metadata only)
+ */
+
 export const articles = [
   {
     id: 1,
@@ -1018,6 +1031,245 @@ Technology does not advance society by existing quietly in labs.
 It advances when engineers are willing to explain, share, and invite others into the process.
 
 This experience marked an important step in learning how to do exactly that.
+        `
+  },
+  {
+    id: 11,
+    slug: "vision-language-runtime-browser",
+    title: "Building a Vision-Language Model Runtime That Runs Entirely in Your Browser",
+    description: "Engineering a privacy-first, zero-dependency vision-language system using WebGPU, vanilla JavaScript, and Apple's FastVLM model—no frameworks, no servers, no API calls.",
+    category: "AI Systems",
+    reading_time: "10 min read",
+    cover_image: "/blogs/vlmr_cover.png",
+    date: "2025 – 2026",
+    tags: ["WebGPU", "ComputerVision", "VisionLanguageModels", "Privacy", "VanillaJS", "BrowserAI"],
+    content: `
+## Against the Grain
+
+Most AI demos today follow the same pattern: capture data locally, send it to a server, get a response back.
+
+That architecture is convenient—for the developer. For the user, it means surrendering privacy, relying on network latency, and trusting third parties with visual data.
+
+This project took a different approach: build a vision-language model runtime that runs entirely in the browser, on the user's GPU, with zero external dependencies and complete privacy.
+
+No servers. No frameworks. Just WebGPU, vanilla JavaScript, and a model designed by Apple.
+
+## The Core Challenge: Real-Time Vision Understanding Without Servers
+
+Vision-language models (VLMs) are powerful tools that can answer questions about images. Point at an object, ask "What is this?", and the model responds.
+
+Traditionally, this requires:
+
+- Cloud infrastructure
+- API calls
+- Backend servers
+- Network bandwidth
+- Privacy trade-offs
+
+The question was: can this run entirely client-side, in real time, without sacrificing usability?
+
+## Why WebGPU Matters
+
+WebGPU is a modern browser API that provides low-level GPU access directly from JavaScript. Unlike WebGL, it was designed for general-purpose computing, not just graphics.
+
+This means:
+
+- Direct GPU memory management
+- Compute shaders
+- High-performance tensor operations
+- FP16 support (half-precision floating point for 2× speed)
+
+For the first time, browsers can run serious machine learning models without external dependencies.
+
+The challenge was making it work reliably across devices.
+
+## System Architecture: No Build Step, No Dependencies
+
+The project was intentionally constrained:
+
+- **No npm packages** (except optional dev tools)
+- **No bundlers** (no Webpack, Vite, or Rollup)
+- **No frameworks** (vanilla JavaScript only)
+- **No servers** (runs as static HTML/CSS/JS)
+
+This decision was not aesthetic—it was architectural.
+
+Dependencies create fragility. Build tools create maintenance burden. Frameworks create abstraction layers that obscure performance.
+
+By eliminating all of these, the system became:
+
+- Instantly deployable
+- Easy to audit
+- Performant by default
+- Future-proof
+
+## The Model: Apple FastVLM-0.5B
+
+The system uses Apple's FastVLM-0.5B, a lightweight vision-language model specifically optimized for edge deployment.
+
+Key characteristics:
+
+- 500 million parameters
+- Multimodal (vision + language)
+- Fast inference (~1-3 seconds per frame on modern hardware)
+- ONNX format (compatible with Transformers.js)
+
+The model was chosen not for state-of-the-art accuracy, but for the balance between capability and deployability.
+
+## Engineering for Privacy
+
+Privacy was not a feature—it was the design constraint.
+
+The system guarantees:
+
+- Camera feed never leaves the device
+- No telemetry or analytics
+- No API calls
+- No external model loading after initial download
+- Complete operation offline after first load
+
+This is not marketing language. It is enforced by the architecture.
+
+When users point their camera at sensitive documents, medical information, or personal spaces, the system cannot leak data—because there is nowhere for it to go.
+
+## State Machine Architecture: Formal, Not Ad-Hoc
+
+One of the most critical engineering decisions was implementing a formal state machine for UI and runtime management.
+
+Rather than using boolean flags and implicit state, the system defines:
+
+**ViewState**: UI screens  
+\`permission | welcome | loading | runtime | error | image-upload\`
+
+**RuntimeState**: Execution state  
+\`idle | warming | running | paused | recovering | failed\`
+
+**LoadingPhase**: Model initialization  
+\`loading-wgpu | loading-model | warming-up | complete\`
+
+Transitions are explicit and guarded:
+
+- \`PERMISSION_GRANTED → welcome\`
+- \`START → loading\`
+- \`MODEL_LOADED → warmup\`
+- \`WARMUP_COMPLETE → runtime\`
+
+This approach eliminates an entire class of bugs: invalid state transitions.
+
+When errors occur, recovery paths are predefined. When the camera stream ends, the system knows exactly how to respond.
+
+This is how production systems are built.
+
+## Performance Under Constraints
+
+Real-world performance required aggressive optimization:
+
+**Lazy loading**: Model loads only after user interaction (~60% faster startup)
+
+**Frame downscaling**: Images resized to 640px before inference (~50% faster)
+
+**Throttled updates**: UI refreshes at 100ms intervals, not per-frame
+
+**Canvas caching**: Dimensions tracked to avoid recomputation
+
+**Abortable operations**: Long-running tasks can be canceled cleanly
+
+The result: ~1-3 seconds per inference on modern hardware, with graceful degradation on slower devices.
+
+## FP16 Support: Doubling Inference Speed
+
+Half-precision floating point (FP16) can double inference speed on compatible GPUs.
+
+The system automatically detects and enables FP16 when available, with fallback to FP32.
+
+On a Samsung S24+, this reduced inference time from 4-6 seconds to 2-3 seconds.
+
+On desktop RTX 4090 hardware, inference runs in 1-2 seconds.
+
+This is the difference between an experimental demo and a usable tool.
+
+## Deployment Reality: Zero Configuration
+
+Because the system has no build step, deployment is trivial:
+
+1. Upload the \`src/\` folder to any static host
+2. Done
+
+No environment variables. No server configuration. No database setup.
+
+The project runs on:
+
+- Cloudflare Pages
+- Vercel
+- Netlify
+- GitHub Pages
+- Any static file server
+
+This is not convenience—it is resilience. The fewer moving parts, the fewer points of failure.
+
+## Mobile and Cross-Browser Compatibility
+
+WebGPU is still emerging technology. Not all browsers support it equally.
+
+The system includes:
+
+- Feature detection (graceful fallback to image upload mode)
+- Mobile-specific camera handling
+- Safari/iOS compatibility layers
+- HTTPS/localhost enforcement (required for camera access)
+- Detailed error messages for blocked permissions
+
+When WebGPU is unavailable, the system remains functional—just without real-time inference.
+
+## Why Vanilla JavaScript Matters
+
+Modern web development often assumes frameworks are mandatory. They are not.
+
+Vanilla JavaScript provides:
+
+- Direct browser API access
+- Zero abstraction overhead
+- Complete transparency
+- Smaller bundle size
+- No breaking changes from upstream dependencies
+
+For a system designed to run indefinitely without maintenance, this matters.
+
+Frameworks come and go. The web platform persists.
+
+## What This System Is Not
+
+This project does not claim to be:
+
+- State-of-the-art in model accuracy
+- Faster than cloud-based inference
+- Suitable for all use cases
+
+What it does claim is:
+
+- Complete privacy
+- No operational costs
+- Instant deployment
+- Long-term maintainability
+
+Those trade-offs were intentional.
+
+## The Real Lesson
+
+The most important insight from this project was not technical—it was philosophical.
+
+**AI does not need to run in the cloud to be useful.**
+
+When privacy, cost, and latency matter, client-side inference is not just viable—it is superior.
+
+This project demonstrated that with the right constraints and disciplined engineering, serious machine learning systems can run in everyday browsers, on everyday hardware, without external dependencies.
+
+The web platform is more capable than most developers assume.
+
+It just requires the willingness to work without frameworks, to optimize aggressively, and to design for deployment reality—not theoretical ideals.
+
+**[View the live demo →](https://vision-language-runtime.pages.dev/)**  
+**[Explore the source →](https://github.com/deepdevjose/Vision-Language-Runtime)**
         `
   }
 ];

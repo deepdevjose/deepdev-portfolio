@@ -3,27 +3,18 @@ import styles from './projects.module.css'
 import { projects } from './data';
 import Card from './Card/card';
 import { useScroll } from 'framer-motion';
-import { useEffect, useRef } from 'react';
-import Lenis from 'lenis'
+import { useRef } from 'react';
 import Button from '../buttons/projectbtn/button2';
 
-
+/**
+ * Projects component - uses global Lenis instance from LenisProvider
+ * No local Lenis needed - prevents double scroll engine and RAF leaks
+ */
 export default function Projects() {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ['start start', 'end end']
-  })
-
-  useEffect(() => {
-    const lenis = new Lenis()
-
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
   })
 
   return (

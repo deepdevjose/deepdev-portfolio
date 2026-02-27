@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { articles, getArticleBySlug } from '../../modules/userDefined/blogs/articlesData';
 import style from '../../modules/userDefined/blogs/fullBlog.module.css';
 
@@ -49,10 +50,15 @@ export default async function ArticlePage({ params }) {
     return (
         <div className={style.blogSection}>
             <article className={style.blog}>
-                <img
+                <Image
                     src={article.cover_image}
                     className={style.blogimg}
                     alt={article.title}
+                    width={1200}
+                    height={600}
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                    style={{ objectFit: 'cover' }}
                 />
                 <div className={style.blogBox}>
                     <div className={style.categoryBadge}>{article.category}</div>

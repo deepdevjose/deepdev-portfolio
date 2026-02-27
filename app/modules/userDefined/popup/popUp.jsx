@@ -1,5 +1,6 @@
 'use client'
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import styles from './popUp.module.css';
 // PDF imports removed for lightweight build
 // import { Viewer, Worker, SpecialZoomLevel } from '@react-pdf-viewer/core';
@@ -60,10 +61,14 @@ export default function Popup({ isOpen, onClose }) {
                                     theme={resolvedTheme}
                                 />
                             </Worker> */}
-                            <img
+                            <Image
                                 src="/resume_preview.jpg"
                                 alt="Resume"
+                                width={1200}
+                                height={1600}
                                 onLoad={() => setIsLoading(false)}
+                                sizes="(max-width: 768px) 100vw, 1200px"
+                                style={{ width: '100%', height: 'auto' }}
                             />
                         </div>
 

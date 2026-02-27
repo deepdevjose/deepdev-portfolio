@@ -265,3 +265,48 @@ body {
 /* const darkColors = ["#121212", "#1e1e1e", "#2a2a2a", "#abff2e"];
   // Light mode palette
   const lightColors = ["#e0e0e0", "#f5f5f5", "#ffffff", "#abff2e"]; */
+
+/* ============================================
+   Performance Optimizations
+   ============================================ */
+
+/* Respetar preferencia de movimiento reducido del usuario */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Optimización: will-change para elementos que se animan frecuentemente */
+/* Nota: Solo aplicar en elementos específicos, no globalmente */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+/* Asegurar que transformaciones usen GPU */
+.gpu-accelerate {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Reducir complejidad visual en dispositivos móviles */
+@media (max-width: 1023px) {
+  /* Simplificar sombras */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  /* Reducir blur effects */
+  .blur,
+  [class*="blur"] {
+    backdrop-filter: none !important;
+    filter: none !important;
+  }
+}

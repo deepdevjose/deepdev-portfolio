@@ -4,6 +4,17 @@
 
 ![Portfolio Preview](https://github.com/user-attachments/assets/1a56d597-0c24-4f39-88ee-66fb7175db94)
 
+SSG - Static Site Generation
+Las páginas se generan en tiempo de build (cuando ejecutas npm run build)
+El HTML se pre-renderiza y se sirve como archivos estáticos
+Ultra-rápido: el contenido ya está listo
+Ideal para: páginas que no cambian frecuentemente (landing, about, posts de blog)
+SSR - Server-Side Rendering
+Las páginas se generan en cada request en el servidor
+El HTML se crea dinámicamente cuando un usuario visita
+Siempre actualizado: datos frescos en cada carga
+Ideal para: dashboards, feeds personalizados, contenido que cambia constantemente
+
 ## ✨ Overview
 
 **DeepDev Portfolio** is a cutting-edge showcase of my professional identity, designed to push the boundaries of modern web development. It features a stunning **glassmorphism UI**, **3D interactive elements**, and silky smooth scroll physics, all powered by the latest web technologies.

@@ -1,3 +1,4 @@
+"use client"
 /*
 	Installed from https://reactbits.dev/ts/tailwind/
 */
@@ -62,6 +63,36 @@ const useDarkMode = () => {
   return isDark;
 };
 
+/**
+ * Device Performance Detection
+ * Detects low-end devices to apply simpler fallbacks
+ */
+const useDevicePerformance = () => {
+  const [isLowEnd, setIsLowEnd] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Check if mobile
+    const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    setIsMobile(mobile);
+
+    // Detect low-end device signals
+    const hardwareConcurrency = navigator.hardwareConcurrency || 2;
+    const lowMemory = (navigator as any).deviceMemory && (navigator as any).deviceMemory < 4;
+    const saveData = (navigator as any).connection?.saveData;
+    const slowConnection = (navigator as any).connection?.effectiveType === '2g' || 
+                          (navigator as any).connection?.effectiveType === '3g';
+
+    // Low-end if: fewer cores, low memory, save-data mode, or slow connection
+    const lowEnd = hardwareConcurrency <= 2 || lowMemory || saveData || slowConnection;
+    setIsLowEnd(lowEnd);
+  }, []);
+
+  return { isLowEnd, isMobile };
+};
+
 const GlassSurface: React.FC<GlassSurfaceProps> = ({
   children,
   width = 200,
@@ -97,6 +128,19 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   const gaussianBlurRef = useRef<SVGFEGaussianBlurElement>(null);
 
   const isDarkMode = useDarkMode();
+  const { isLowEnd, isMobile } = useDevicePerformance();
+  
+  // Track if component is mounted (client-side)
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Adaptive parameters based on device performance
+  const adaptiveBlur = isLowEnd ? Math.min(blur * 0.5, 6) : isMobile ? Math.min(blur * 0.7, 8) : blur;
+  const adaptiveDisplace = isLowEnd ? 0 : displace;
+  const adaptiveDistortion = isLowEnd ? 0 : isMobile ? distortionScale * 0.5 : distortionScale;
 
   const generateDisplacementMap = () => {
     const rect = containerRef.current?.getBoundingClientRect();
@@ -119,7 +163,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
         <rect x="0" y="0" width="${actualWidth}" height="${actualHeight}" fill="black"></rect>
         <rect x="0" y="0" width="${actualWidth}" height="${actualHeight}" rx="${borderRadius}" fill="url(#${redGradId})" />
         <rect x="0" y="0" width="${actualWidth}" height="${actualHeight}" rx="${borderRadius}" fill="url(#${blueGradId})" style="mix-blend-mode: ${mixBlendMode}" />
-        <rect x="${edgeSize}" y="${edgeSize}" width="${actualWidth - edgeSize * 2}" height="${actualHeight - edgeSize * 2}" rx="${borderRadius}" fill="hsl(0 0% ${brightness}% / ${opacity})" style="filter:blur(${blur}px)" />
+        <rect x="${edgeSize}" y="${edgeSize}" width="${actualWidth - edgeSize * 2}" height="${actualHeight - edgeSize * 2}" rx="${borderRadius}" fill="hsl(0 0% ${brightness}% / ${opacity})" style="filter:blur(${adaptiveBlur}px)" />
       </svg>
     `;
 
@@ -132,6 +176,15 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
 
   useEffect(() => {
     updateDisplacementMap();
+    
+    // Skip expensive filters on low-end devices
+    if (isLowEnd) {
+      if (gaussianBlurRef.current) {
+        gaussianBlurRef.current.setAttribute("stdDeviation", "0");
+      }
+      return;
+    }
+
     [
       { ref: redChannelRef, offset: redOffset },
       { ref: greenChannelRef, offset: greenOffset },
@@ -140,14 +193,14 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
       if (ref.current) {
         ref.current.setAttribute(
           "scale",
-          (distortionScale + offset).toString()
+          (adaptiveDistortion + offset).toString()
         );
         ref.current.setAttribute("xChannelSelector", xChannel);
         ref.current.setAttribute("yChannelSelector", yChannel);
       }
     });
 
-    gaussianBlurRef.current?.setAttribute("stdDeviation", displace.toString());
+    gaussianBlurRef.current?.setAttribute("stdDeviation", adaptiveDisplace.toString());
   }, [
     width,
     height,
@@ -155,50 +208,59 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     borderWidth,
     brightness,
     opacity,
-    blur,
-    displace,
-    distortionScale,
+    adaptiveBlur,
+    adaptiveDisplace,
+    adaptiveDistortion,
     redOffset,
     greenOffset,
     blueOffset,
     xChannel,
     yChannel,
     mixBlendMode,
+    isLowEnd,
   ]);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
+    let rafId: number | null = null;
+    let resizing = false;
+
+    // Throttle resize updates with RAF for better performance
+    const throttledUpdate = () => {
+      if (!resizing) return;
+      updateDisplacementMap();
+      resizing = false;
+    };
+
     const resizeObserver = new ResizeObserver(() => {
-      setTimeout(updateDisplacementMap, 0);
+      if (!resizing) {
+        resizing = true;
+        rafId = requestAnimationFrame(throttledUpdate);
+      }
     });
 
     resizeObserver.observe(containerRef.current);
 
     return () => {
       resizeObserver.disconnect();
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
     };
-  }, []);
+  }, [isLowEnd, isMobile]); // Re-observe if device performance changes
 
   useEffect(() => {
-    if (!containerRef.current) return;
-
-    const resizeObserver = new ResizeObserver(() => {
-      setTimeout(updateDisplacementMap, 0);
-    });
-
-    resizeObserver.observe(containerRef.current);
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, []);
-
-  useEffect(() => {
+    // Initial update after mount
     setTimeout(updateDisplacementMap, 0);
   }, [width, height]);
 
   const supportsSVGFilters = () => {
+    // SSR protection: return false on server
+    if (typeof window === "undefined" || typeof document === "undefined" || typeof navigator === "undefined") {
+      return false;
+    }
+
     const isWebkit =
       /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
     const isFirefox = /Firefox/.test(navigator.userAgent);
@@ -213,7 +275,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   };
 
   const supportsBackdropFilter = () => {
-    if (typeof window === "undefined") return false;
+    if (typeof window === "undefined" || typeof CSS === "undefined") return false;
     return CSS.supports("backdrop-filter", "blur(10px)");
   };
 
@@ -227,12 +289,51 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
       "--glass-saturation": saturation,
     } as React.CSSProperties;
 
+    // SSR + Initial hydration: Use simple consistent styles
+    if (!isMounted) {
+      return {
+        ...baseStyles,
+        background: isDarkMode 
+          ? "rgba(0, 0, 0, 0.4)" 
+          : "rgba(255, 255, 255, 0.4)",
+        border: isDarkMode
+          ? "1px solid rgba(255, 255, 255, 0.2)"
+          : "1px solid rgba(255, 255, 255, 0.3)",
+        boxShadow: isDarkMode
+          ? "inset 0 1px 0 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 0 rgba(255, 255, 255, 0.1)"
+          : "inset 0 1px 0 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 0 rgba(255, 255, 255, 0.3)",
+      };
+    }
+
+    // Simple fallback for low-end devices (no expensive filters)
+    if (isLowEnd) {
+      return {
+        ...baseStyles,
+        background: isDarkMode 
+          ? "rgba(0, 0, 0, 0.6)" 
+          : "rgba(255, 255, 255, 0.6)",
+        border: isDarkMode 
+          ? "1px solid rgba(255, 255, 255, 0.15)" 
+          : "1px solid rgba(0, 0, 0, 0.1)",
+        boxShadow: isDarkMode
+          ? "0 4px 8px rgba(0, 0, 0, 0.2)"
+          : "0 4px 8px rgba(0, 0, 0, 0.1)",
+      };
+    }
+
     const svgSupported = supportsSVGFilters();
     const backdropFilterSupported = supportsBackdropFilter();
+
+    // GPU hints for better compositing (but not on low-end)
+    const gpuHints: React.CSSProperties = {
+      willChange: 'backdrop-filter, opacity',
+      transform: 'translateZ(0)', // Force GPU layer
+    };
 
     if (svgSupported) {
       return {
         ...baseStyles,
+        ...(!isLowEnd && !isMobile ? gpuHints : {}),
         background: isDarkMode
           ? `hsl(0 0% 0% / ${backgroundOpacity})`
           : `hsl(0 0% 100% / ${backgroundOpacity})`,
@@ -266,11 +367,13 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
                         inset 0 -1px 0 0 rgba(255, 255, 255, 0.1)`,
           };
         } else {
+          const blurValue = isMobile ? "8px" : "12px";
           return {
             ...baseStyles,
+            ...(isMobile ? {} : gpuHints),
             background: "rgba(255, 255, 255, 0.1)",
-            backdropFilter: "blur(12px) saturate(1.8) brightness(1.2)",
-            WebkitBackdropFilter: "blur(12px) saturate(1.8) brightness(1.2)",
+            backdropFilter: `blur(${blurValue}) saturate(1.8) brightness(1.2)`,
+            WebkitBackdropFilter: `blur(${blurValue}) saturate(1.8) brightness(1.2)`,
             border: "1px solid rgba(255, 255, 255, 0.2)",
             boxShadow: `inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
                         inset 0 -1px 0 0 rgba(255, 255, 255, 0.1)`,
@@ -286,11 +389,13 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
                         inset 0 -1px 0 0 rgba(255, 255, 255, 0.3)`,
           };
         } else {
+          const blurValue = isMobile ? "8px" : "12px";
           return {
             ...baseStyles,
+            ...(isMobile ? {} : gpuHints),
             background: "rgba(255, 255, 255, 0.25)",
-            backdropFilter: "blur(12px) saturate(1.8) brightness(1.1)",
-            WebkitBackdropFilter: "blur(12px) saturate(1.8) brightness(1.1)",
+            backdropFilter: `blur(${blurValue}) saturate(1.8) brightness(1.1)`,
+            WebkitBackdropFilter: `blur(${blurValue}) saturate(1.8) brightness(1.1)`,
             border: "1px solid rgba(255, 255, 255, 0.3)",
             boxShadow: `0 8px 32px 0 rgba(31, 38, 135, 0.2),
                         0 2px 16px 0 rgba(31, 38, 135, 0.1),

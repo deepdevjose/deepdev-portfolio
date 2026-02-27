@@ -1,6 +1,7 @@
 "use client"
 import style from "./blogs.module.css";
 import Link from 'next/link';
+import Image from 'next/image';
 import LinkButton from "../buttons/MoreBlogs/moreBlogs"
 
 // Static article data - curated technical articles
@@ -28,14 +29,14 @@ const articles = [
         date: "2025"
     },
     {
-        id: 3,
-        slug: "ai-virtual-psychologist",
-        title: "Designing an AI-Based Virtual Psychologist for Educational Environments",
-        description: "Documenting the design and institutional presentation of an AI-based virtual psychologist for educational infrastructure.",
+        id: 11,
+        slug: "vision-language-runtime-browser",
+        title: "Building a Vision-Language Model Runtime That Runs Entirely in Your Browser",
+        description: "Engineering a privacy-first, zero-dependency vision-language system using WebGPU, vanilla JavaScript, and Apple's FastVLM model—no frameworks, no servers, no API calls.",
         category: "AI Systems",
-        reading_time: "9 min read",
-        cover_image: "/blogs/ai-psychologist-cover.jpg",
-        date: "2025"
+        reading_time: "10 min read",
+        cover_image: "/blogs/vlmr_cover.png",
+        date: "2025 – 2026"
     }
 ];
 
@@ -54,16 +55,26 @@ export default function Blogs() {
                 <Link
                     href={`/blog/${heroArticle.slug}`}
                     className={style.heroCard}
+                    data-category={heroArticle.category.toLowerCase().replace(/\s+/g, '-')}
                 >
-                    <img src={heroArticle.cover_image} alt={heroArticle.title} className={style.heroCoverImage} />
+                    <div className={style.heroImageWrapper}>
+                        <Image 
+                            src={heroArticle.cover_image} 
+                            alt={heroArticle.title} 
+                            className={style.heroCoverImage}
+                            fill
+                            priority
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                            style={{ objectFit: 'cover' }}
+                        />
+                        <div className={style.heroOverlay}></div>
+                    </div>
                     <div className={style.heroContent}>
-                        <div className={style.categoryBadge}>{heroArticle.category}</div>
+                        <div className={style.categoryBadge} data-category={heroArticle.category.toLowerCase().replace(/\s+/g, '-')}>{heroArticle.category}</div>
                         <div className={style.heroTitle}>{heroArticle.title}</div>
                         <div className={style.date}>
-                            <div>{heroArticle.date}</div>✦︎
-                            <div>{heroArticle.reading_time}</div>
+                            {heroArticle.date} · {heroArticle.reading_time.replace(' read', '')}
                         </div>
-                        <div className={style.heroDescription}>{heroArticle.description}</div>
                     </div>
                 </Link>
 
@@ -74,14 +85,23 @@ export default function Blogs() {
                             href={`/blog/${article.slug}`}
                             className={style.secondaryCard}
                             key={article.id}
+                            data-category={article.category.toLowerCase().replace(/\s+/g, '-')}
                         >
-                            <img src={article.cover_image} alt={article.title} className={style.secondaryCoverImage} />
+                            <div className={style.secondaryImageWrapper}>
+                                <Image 
+                                    src={article.cover_image} 
+                                    alt={article.title} 
+                                    className={style.secondaryCoverImage}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                                    style={{ objectFit: 'cover' }}
+                                />
+                            </div>
                             <div className={style.secondaryContent}>
-                                <div className={style.categoryBadgeSmall}>{article.category}</div>
+                                <div className={style.categoryBadgeSmall} data-category={article.category.toLowerCase().replace(/\s+/g, '-')}>{article.category}</div>
                                 <div className={style.secondaryTitle}>{article.title}</div>
                                 <div className={style.dateSmall}>
-                                    <div>{article.date}</div>✦︎
-                                    <div>{article.reading_time}</div>
+                                    {article.date} · {article.reading_time.replace(' read', '')}
                                 </div>
                             </div>
                         </Link>

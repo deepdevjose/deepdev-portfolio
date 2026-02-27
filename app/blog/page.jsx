@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { articles } from '../modules/userDefined/blogs/articlesData';
+import { articlesMetadata } from '../modules/userDefined/blogs/articlesMetadata';
 import style from '../modules/userDefined/blogs/blogIndex.module.css';
 
 // Dynamic import with SSR disabled and loading fallback
@@ -23,7 +24,7 @@ export default function BlogIndex() {
     const [sortBy, setSortBy] = useState('newest');
 
     // Filter articles based on search and category
-    const filteredArticles = articles.filter(article => {
+    const filteredArticles = articlesMetadata.filter(article => {
         const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             article.description.toLowerCase().includes(searchQuery.toLowerCase());
 
@@ -34,7 +35,7 @@ export default function BlogIndex() {
     });
 
     // Featured article (first one)
-    const featuredArticle = articles[0];
+    const featuredArticle = articlesMetadata[0];
     const gridArticles = activeCategory === 'All' && searchQuery === ''
         ? filteredArticles.slice(1)
         : filteredArticles;
@@ -127,10 +128,15 @@ export default function BlogIndex() {
                     <section className={style.featuredSection}>
                         <div className={style.featuredLabel}>Featured</div>
                         <Link href={`/blog/${featuredArticle.slug}`} className={style.featuredCard}>
-                            <img
+                            <Image
                                 src={featuredArticle.cover_image}
                                 alt={featuredArticle.title}
                                 className={style.featuredImage}
+                                width={1200}
+                                height={600}
+                                priority
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                                style={{ objectFit: 'cover' }}
                             />
                             <div className={style.featuredContent}>
                                 <span className={style.categoryBadge}>{featuredArticle.category}</span>
@@ -166,10 +172,14 @@ export default function BlogIndex() {
                                         key={article.id}
                                         className={cardClass}
                                     >
-                                        <img
+                                        <Image
                                             src={article.cover_image}
                                             alt={article.title}
                                             className={style.articleCover}
+                                            width={600}
+                                            height={400}
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                                            style={{ objectFit: 'cover' }}
                                         />
                                         <div className={style.articleContent}>
                                             <span className={style.categoryBadgeSmall}>{article.category}</span>

@@ -3,13 +3,38 @@
   margin-top: 150px;
   max-width: 1000px;
   width: 95%;
+  position: relative;
+}
+
+.blogSection::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top center, rgba(17, 17, 17, 0.4) 0%, rgba(0, 0, 0, 0.95) 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.blogSection::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
 }
 
 .moreBlogs {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  padding-top: 40px;
+  padding-top: 48px;
   padding-bottom: 10px;
 }
 
@@ -19,16 +44,21 @@
   align-items: center;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   line-height: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 800;
-  margin-bottom: 50px;
+  font-weight: 600;
+  margin-bottom: 60px;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--text) 0%, rgba(255,255,255,0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Editorial Grid Layout */
 .editorialGrid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 20px;
-  min-height: 480px;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+  min-height: 540px;
 }
 
 /* Hero Card - Left Side */
@@ -36,176 +66,277 @@
   display: flex;
   flex-direction: column;
   border-radius: 24px;
-  padding: 12px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 
-  /* Subtle Liquid Glass */
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  /* Premium Glassmorphism */
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .heroCard:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0px 12px 40px color-mix(in srgb, transparent 50%, var(--accent) 50%);
-  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-6px);
+}
+
+/* Category-specific hover colors */
+.heroCard[data-category="ai-research"]:hover {
+  box-shadow: 
+    0 16px 48px rgba(147, 51, 234, 0.25),
+    0 0 0 1px rgba(147, 51, 234, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.heroCard[data-category="academic-project"]:hover {
+  box-shadow: 
+    0 16px 48px rgba(59, 130, 246, 0.25),
+    0 0 0 1px rgba(59, 130, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.heroCard[data-category="ai-systems"]:hover {
+  box-shadow: 
+    0 16px 48px rgba(148, 163, 184, 0.25),
+    0 0 0 1px rgba(148, 163, 184, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.heroImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
 }
 
 .heroCoverImage {
   width: 100%;
-  height: 220px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 16px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: saturate(0.85) brightness(0.95);
+}
+
+.heroCard:hover .heroCoverImage {
+  transform: scale(1.03);
+  filter: saturate(1) brightness(1);
+}
+
+.heroOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5) 60%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+  pointer-events: none;
 }
 
 .heroContent {
-  padding: 16px 8px 8px;
+  padding: 24px 24px 28px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
   flex: 1;
 }
 
 .heroTitle {
-  font-size: 1.6rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  line-height: 1.3;
-  transition: all 0.3s ease;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  transition: all 0.2s ease;
 }
 
 .heroCard:hover .heroTitle {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.heroDescription {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.5;
+  color: var(--accent);
 }
 
 /* Secondary Stack - Right Side */
 .secondaryStack {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .secondaryCard {
   display: flex;
   flex-direction: row;
-  gap: 12px;
-  background-color: var(--blogbg);
-  border-radius: 16px;
-  padding: 10px;
+  gap: 16px;
+  border-radius: 20px;
+  padding: 16px;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, transparent 80%, var(--text) 20%);
-  transition: all 0.3s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   flex: 1;
+  
+  /* Refined Glassmorphism */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .secondaryCard:hover {
-  border-color: var(--accent);
-  box-shadow: 0px 4px 16px color-mix(in srgb, transparent 70%, var(--accent) 30%);
-  transform: translateX(4px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transform: translateY(-3px);
+}
+
+/* Category-specific hover colors for secondary cards */
+.secondaryCard[data-category="academic-project"]:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+}
+
+.secondaryCard[data-category="ai-systems"]:hover {
+  border-color: rgba(148, 163, 184, 0.4);
+  box-shadow: 0 8px 24px rgba(148, 163, 184, 0.2);
+}
+
+.secondaryImageWrapper {
+  position: relative;
+  width: 120px;
+  height: 100%;
+  min-height: 90px;
+  overflow: hidden;
+  border-radius: 12px;
+  flex-shrink: 0;
 }
 
 .secondaryCoverImage {
-  width: 100px;
+  width: 100%;
   height: 100%;
-  min-height: 80px;
   object-fit: cover;
-  border-radius: 12px;
-  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: saturate(0.85);
+}
+
+.secondaryCard:hover .secondaryCoverImage {
+  transform: scale(1.05);
+  filter: saturate(1);
 }
 
 .secondaryContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 4px;
+  gap: 6px;
   flex: 1;
 }
 
 .secondaryTitle {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  transition: color 0.2s ease;
 }
 
 .secondaryCard:hover .secondaryTitle {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  color: var(--accent);
 }
 
-/* Badges - Micro Glass */
+/* Badges - Category Colors */
 .categoryBadge {
   display: inline-block;
   width: fit-content;
-  padding: 6px 14px;
+  padding: 7px 16px;
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--accent);
+  letter-spacing: 0.06em;
   border-radius: 100px;
-
-  /* Micro Glass */
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
-.categoryBadge:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: var(--accent);
-  box-shadow: 0 0 12px color-mix(in srgb, transparent 60%, var(--accent) 40%);
+/* AI Research - Purple */
+.categoryBadge[data-category="ai-research"] {
+  color: rgba(196, 130, 255, 0.95);
+  background: rgba(147, 51, 234, 0.12);
+  border: 1px solid rgba(147, 51, 234, 0.25);
+}
+
+.heroCard:hover .categoryBadge[data-category="ai-research"] {
+  background: rgba(147, 51, 234, 0.2);
+  border-color: rgba(147, 51, 234, 0.4);
+  box-shadow: 0 0 12px rgba(147, 51, 234, 0.2);
+}
+
+/* Academic Project - Blue */
+.categoryBadge[data-category="academic-project"],
+.categoryBadgeSmall[data-category="academic-project"] {
+  color: rgba(139, 186, 255, 1);
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.heroCard:hover .categoryBadge[data-category="academic-project"],
+.secondaryCard:hover .categoryBadgeSmall[data-category="academic-project"] {
+  background: rgba(59, 130, 246, 0.22);
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.25);
+}
+
+/* AI Systems - Cool Gray */
+.categoryBadge[data-category="ai-systems"],
+.categoryBadgeSmall[data-category="ai-systems"] {
+  color: rgba(203, 213, 225, 1);
+  background: rgba(148, 163, 184, 0.15);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.heroCard:hover .categoryBadge[data-category="ai-systems"],
+.secondaryCard:hover .categoryBadgeSmall[data-category="ai-systems"] {
+  background: rgba(148, 163, 184, 0.22);
+  border-color: rgba(148, 163, 184, 0.45);
+  box-shadow: 0 0 12px rgba(148, 163, 184, 0.25);
 }
 
 .categoryBadgeSmall {
   display: inline-block;
   width: fit-content;
-  padding: 4px 10px;
-  font-size: 0.6rem;
-  font-weight: 500;
+  padding: 5px 12px;
+  font-size: 0.65rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-muted);
+  letter-spacing: 0.05em;
   border-radius: 100px;
-
-  /* Lighter Glass */
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
-/* Date styles */
+/* Date styles - Minimal */
 .date {
-  display: flex;
-  gap: 5px;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 .dateSmall {
-  display: flex;
-  gap: 4px;
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 /* Mobile Responsive */
@@ -219,8 +350,8 @@
     margin-bottom: 10px;
   }
 
-  .heroCoverImage {
-    height: 180px;
+  .heroImageWrapper {
+    height: 220px;
   }
 
   .secondaryCard {
@@ -250,11 +381,15 @@
     font-size: 0.85rem;
   }
 
-  .heroCoverImage {
-    height: 150px;
+  .heroImageWrapper {
+    height: 180px;
+  }
+  
+  .heroContent {
+    padding: 20px 20px 24px;
   }
 
-  .secondaryCoverImage {
+  .secondaryImageWrapper {
     width: 70px;
     min-height: 60px;
   }
